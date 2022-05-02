@@ -12,7 +12,7 @@ public final class SaleDTO{
     private final LocalDateTime localDateTime;
     private HashMap <String, Item> items = new HashMap<String, Item>();
     private Amount amountPaid;
-    private Amount changeAmount;
+    private Amount changeAmount; int x = 2;
 
     /**
      * Creates a new instance representing a particular sale.
