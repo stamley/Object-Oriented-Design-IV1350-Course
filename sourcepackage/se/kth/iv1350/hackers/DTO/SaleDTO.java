@@ -57,7 +57,7 @@ public final class SaleDTO{
      * @return the value of totalRunningPrice.
      */
     public PaymentTotal getPaymentTotal(){
-        return paymentTotal;
+        return this.paymentTotal;
     }
 
     /**

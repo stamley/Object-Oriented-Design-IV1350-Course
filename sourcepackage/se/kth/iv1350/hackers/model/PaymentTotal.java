@@ -35,7 +35,7 @@ public class PaymentTotal {
         Amount itemPrice = item.getItemDescription().getItemPrice();
         Amount itemVAT = item.getItemDescription().getItemVAT();
 
-        this.total = this.total.increase(itemQuantity.multiply.(itemPrice));
+        this.total = this.total.increase(itemQuantity.multiply(itemPrice));
 
         // this.totalVAT = this.totalVAT.increase(itemQuantity.multiply(itemVAT));
     }
@@ -46,7 +46,7 @@ public class PaymentTotal {
      * @return The value of totalIncludingVAT.
      */
     public Amount getTotalIncludingVAT(){
-        return total.increase(vatAmount);
+        return totalVAT;
     }
 
     /**
@@ -58,7 +58,7 @@ public class PaymentTotal {
         return total;
     }
 
-    get
+    
 
 
 
