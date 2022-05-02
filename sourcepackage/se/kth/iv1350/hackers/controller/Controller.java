@@ -9,7 +9,7 @@ import sourcepackage.se.kth.iv1350.hackers.DTO.SaleDTO;
 public class Controller {
 
     private IOController ioController;
-    private DBController dbController;
+    private DBController dbController; 
     private Sale currentSale;
 
     /**
