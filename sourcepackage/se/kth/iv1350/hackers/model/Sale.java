@@ -62,7 +62,7 @@ public class Sale {
         Item existingItem = items.get(item.getItemIdentifier());
         existingItem.increaseQuantity(item.getQuantity());
         items.put(existingItem.getItemIdentifier(), existingItem);
-        paymentTotal.UpdatePaymentTotal(item);
+        paymentTotal.UpdatePayment(item);
     }
 
     /**
@@ -72,7 +72,7 @@ public class Sale {
      */
     private void addItemAndUpdateTotal(Item item){
         items.put(item.getItemIdentifier(), item);
-        paymentTotal.UpdatePaymentTotal(item);
+        paymentTotal.UpdatePayment(item);
     }
 
      /**
