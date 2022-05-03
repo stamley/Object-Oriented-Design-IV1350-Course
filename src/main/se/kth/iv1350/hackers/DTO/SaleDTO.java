@@ -35,9 +35,20 @@ public final class SaleDTO{
         this.items = currentSale.getItems();
         this.amountPaid = currentSale.getAmountPaid();
         this.changeAmount = currentSale.getChangeAmount();
-
     }
-  
+
+        /**
+     * Create a new instance representing a particular sale.
+     * @param currentSale
+     */
+    public SaleDTO(TotalPrice totalPrice, LocalDateTime dateAndTime, HashMap <String, Item> items, Amount amountPaid, Amount changeAmount){
+        this.totalPrice = totalPrice;
+        this.localDateTime = dateAndTime;
+        this.items = items;
+        this.amountPaid = amountPaid;
+        this.changeAmount = changeAmount;
+    }
+
     /**
      * Get the value of totalRunningPrice.
      * 
