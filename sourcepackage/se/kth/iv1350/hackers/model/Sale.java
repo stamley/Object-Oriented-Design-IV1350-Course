@@ -38,6 +38,7 @@ public class Sale {
             // updateQuantityAndTotal(item);
             this.updateQuantity(item);
             this.updateTotal(item);
+
         }
         else {
             this.addItemToList(item);
@@ -57,17 +58,10 @@ public class Sale {
     }
 
     /**
-     * Updates the quantity of an already existing item and increase the total payment amount.
+     * Updates the quantity of an item.
      * 
      * @param item The current item that is being added.
      */
-    // private void updateQuantityAndTotal(Item item){
-    //     Item existingItem = items.get(item.getItemIdentifier());
-    //     existingItem.increaseQuantity(item.getQuantity());
-    //     items.put(existingItem.getItemIdentifier(), existingItem);
-    //     totalPrice.UpdatetotalPrice(item);
-
-    // }
     private void updateQuantity (Item item){
         Item existingItem = items.get(item.getItemIdentifier());
         existingItem.increaseQuantity(item.getQuantity());
@@ -77,6 +71,7 @@ public class Sale {
 
     /**
      * Adds a new item to the sale
+     * 
      * @param item The item that is being added.
      */
     private void addItemToList (Item item){
@@ -86,10 +81,10 @@ public class Sale {
     }
     /**
      * updates the total with the corresponding price of that item
+     * 
      * @param item
      */
     private void updateTotal (Item item){
-        // items.put(item.getItemIdentifier(), item);
         totalPrice.UpdatePrice(item);
     }
 
@@ -108,6 +103,7 @@ public class Sale {
 
     /**
      * Gets the value of totalPrice.
+     * 
      * @return the totalPrice.
      */
     public TotalPrice getTotalPrice(){
@@ -116,6 +112,7 @@ public class Sale {
 
     /**
      * Get the value of HashMap items.
+     * 
      * @return the HashMap items.
      */
     public HashMap<String, Item> getItems(){
@@ -124,6 +121,7 @@ public class Sale {
 
     /**
      * Get the value of dateAndTime.
+     * 
      * @return the dateAndTime value.
      */
     public LocalDateTime getLocalDateTime(){
