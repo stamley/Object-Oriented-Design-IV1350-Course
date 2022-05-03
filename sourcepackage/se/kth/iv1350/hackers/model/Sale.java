@@ -158,6 +158,7 @@ public class Sale {
 
     public SaleDTO registerPayment (Amount payment){
         amountPaid = payment;
+        changeAmount = totalPrice.getTotalDiscountedIncludingVAT().decrease(amountPaid);
         return new SaleDTO (this);
     }
 }
