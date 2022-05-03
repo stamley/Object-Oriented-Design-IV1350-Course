@@ -8,7 +8,7 @@ public class SaleLog {
 
     /**
      * Logs the current sale in the sale log
-     * @param saleInformation Containing information of sale in a SaleDTO
+     * @param saleInformation SaleDTO containing information of sale.
      */
     public void logSale(SaleDTO saleInformation){
         saleLog.add(saleInformation);
