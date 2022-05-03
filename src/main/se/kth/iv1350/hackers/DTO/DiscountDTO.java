@@ -48,8 +48,7 @@ public final class DiscountDTO{
         }
         
         final DiscountDTO other = (DiscountDTO) otherObj;
-        System.out.println(this.getTotalDiscountPercentage());
-        System.out.println(other.getTotalDiscountPercentage());
+
         if(this.getTotalDiscountPercentage().getAmount() != other.getTotalDiscountPercentage().getAmount()){
             return false;
         }
