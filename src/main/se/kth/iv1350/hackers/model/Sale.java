@@ -37,10 +37,8 @@ public class Sale {
      */
     public SaleDTO addItem(Item item){
         if (itemListContainsItem(item)){
-            // updateQuantityAndTotal(item);
             this.updateQuantity(item);
             this.updateTotal(item);
-
         }
         else {
             this.addItemToList(item);
