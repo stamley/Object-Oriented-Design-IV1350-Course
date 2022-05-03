@@ -72,8 +72,8 @@ public class Sale {
     /**
      * Adds a new item to the sale
      * 
-     * @param item The item that is being added.
-     */
+    * @param item The item that is being added.
+    */
     private void addItemToList (Item item){
         items.put(item.getItemIdentifier(), item);
         updateTotal(item);
