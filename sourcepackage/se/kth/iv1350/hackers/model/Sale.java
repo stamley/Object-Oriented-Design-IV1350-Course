@@ -34,7 +34,6 @@ public class Sale {
      */
     public SaleDTO addItem(Item item){
         if (itemListContainsItem(item)){
-            // updateQuantityAndTotal(item);
             updateQuantity(item);
             updateTotal(item);
         }
@@ -57,17 +56,10 @@ public class Sale {
     }
 
     /**
-     * Updates the quantity of an already existing item and increase the total payment amount.
+     * Updates the quantity of an item.
      * 
      * @param item The current item that is being added.
      */
-    // private void updateQuantityAndTotal(Item item){
-    //     Item existingItem = items.get(item.getItemIdentifier());
-    //     existingItem.increaseQuantity(item.getQuantity());
-    //     items.put(existingItem.getItemIdentifier(), existingItem);
-    //     paymentTotal.UpdatePaymentTotal(item);
-
-    // }
     private void updateQuantity (Item item){
         Item existingItem = items.get(item.getItemIdentifier());
         existingItem.increaseQuantity(item.getQuantity());
@@ -77,6 +69,7 @@ public class Sale {
 
     /**
      * Adds a new item to the sale
+     * 
      * @param item The item that is being added.
      */
     private void addItemToList (Item item){
@@ -86,10 +79,10 @@ public class Sale {
     }
     /**
      * updates the total with the corresponding price of that item
+     * 
      * @param item
      */
     private void updateTotal (Item item){
-        // items.put(item.getItemIdentifier(), item);
         paymentTotal.UpdatePayment(item);
     }
 
@@ -103,11 +96,12 @@ public class Sale {
     public SaleDTO applyDiscount (DiscountDTO discount){
         paymentTotal.setTotalDiscountedIncludingVAT(paymentTotal.getTotalIncludingVAT().multiply(
             discount.getTotalDiscountPercentage()));
-        return new SaleDTO (this.currentSale);
+        return new SaleDTO (this);
    } 
 
     /**
      * Gets the value of totalPrice.
+     * 
      * @return the totalPrice.
      */
     public PaymentTotal getTotalPrice(){
@@ -116,6 +110,7 @@ public class Sale {
 
     /**
      * Get the value of HashMap items.
+     * 
      * @return the HashMap items.
      */
     public HashMap<String, Item> getItems(){
@@ -124,6 +119,7 @@ public class Sale {
 
     /**
      * Get the value of dateAndTime.
+     * 
      * @return the dateAndTime value.
      */
     public LocalDateTime getLocalDateTime(){

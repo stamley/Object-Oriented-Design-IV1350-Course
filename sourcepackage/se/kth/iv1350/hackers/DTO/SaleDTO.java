@@ -66,7 +66,7 @@ public final class SaleDTO{
      * @return the value of dateAndTime.
      */
     public LocalDateTime getDateAndTime(){
-        return dateAndTime;
+        return this.localDateTime;
     }
 
     /**
