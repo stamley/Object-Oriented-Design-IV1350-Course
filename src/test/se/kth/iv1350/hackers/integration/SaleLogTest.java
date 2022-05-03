@@ -2,6 +2,8 @@ package se.kth.iv1350.hackers.integration;
 
 import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.model.TotalPrice;
+import se.kth.iv1350.hackers.util.Amount;
+
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.AfterEach;
@@ -18,6 +20,8 @@ public class SaleLogTest {
     @Test
     public void testLogSale() {
         saleLog = new SaleLog();
-        saleDTO = new SaleDTO(new TotalPrice(100,130,0), new LocalDateTime(),);
+        TotalPrice totalPrice = new TotalPrice(new Amount(100),new Amount(130), new Amount(0));
+        LocalDateTime localDateTime = new LocalDateTime();
+        saleDTO = new SaleDTO(totalPrice, new LocalDateTime(), new HashMap<String, Item>(), new);
     }
 }
