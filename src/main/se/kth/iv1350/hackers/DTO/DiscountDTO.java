@@ -37,4 +37,29 @@ public final class DiscountDTO{
     public Amount getTotalDiscountPercentage() {
         return this.totalDiscountPercentage;
     }
+
+    @Override
+    public boolean equals(Object otherObj){
+        if(otherObj == null){
+            return false;
+        }
+        if(this.getClass() != otherObj.getClass()){
+            return false;
+        }
+        
+        final DiscountDTO other = (DiscountDTO) otherObj;
+        if(this.totalDiscountPercentage != other.totalDiscountPercentage){
+            return false;
+        }
+        if(this.typeOfDiscount.equals(other.typeOfDiscount)){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString(){
+        return "Discount: " + totalDiscountPercentage.toString() + "\nType of discount: " + typeOfDiscount;
+    }
+
 }
