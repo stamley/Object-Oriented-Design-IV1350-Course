@@ -103,7 +103,7 @@ public class Sale {
     public SaleDTO applyDiscount (DiscountDTO discount){
         paymentTotal.setTotalDiscountedIncludingVAT(paymentTotal.getTotalIncludingVAT().multiply(
             discount.getTotalDiscountPercentage()));
-        return new SaleDTO (this.currentSale);
+        return new SaleDTO (this);
    } 
 
     /**

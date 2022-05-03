@@ -34,21 +34,7 @@ public final class SaleDTO{
         this.items = currentSale.getItems();
         this.amountPaid = currentSale.getAmountPaid();
         this.changeAmount = currentSale.getChangeAmount();
-    }
-    
-    /**
-     * Creates a new instance representing a particular sale without any information
-     * regarding the actual payment from the customer.
-     * 
-     * @param paymentTotal The sale's total running price.
-     * @param dateAndTime  The current date and time.
-     * @param items        The list containing all items.
-     */
-    public SaleDTO(PaymentTotal paymentTotal, LocalDateTime dateAndTime,
-    HashMap<String,Item> items){
-        this.paymentTotal = paymentTotal;
-        this.localDateTime = dateAndTime;
-        this.items = items;
+
     }
   
     /**
@@ -57,7 +43,7 @@ public final class SaleDTO{
      * @return the value of totalRunningPrice.
      */
     public PaymentTotal getPaymentTotal(){
-        return this.paymentTotal;
+        return paymentTotal;
     }
 
     /**
@@ -66,7 +52,7 @@ public final class SaleDTO{
      * @return the value of dateAndTime.
      */
     public LocalDateTime getDateAndTime(){
-        return dateAndTime;
+        return localDateTime;
     }
 
     /**
