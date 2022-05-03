@@ -12,7 +12,7 @@ public final class SaleDTO{
     private final LocalDateTime localDateTime;
     private HashMap <String, Item> items = new HashMap<String, Item>();
     private Amount amountPaid;
-    private Amount changeAmount; 
+    private Amount changeAmount;
 
     /**
      * Creates a new instance representing a particular sale.
@@ -66,7 +66,7 @@ public final class SaleDTO{
      * @return the value of dateAndTime.
      */
     public LocalDateTime getDateAndTime(){
-        return dateAndTime;
+        return this.localDateTime;
     }
 
     /**
