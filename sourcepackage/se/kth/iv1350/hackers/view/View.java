@@ -1,5 +1,6 @@
 package sourcepackage.se.kth.iv1350.hackers.view;
 import sourcepackage.se.kth.iv1350.hackers.controller.Controller;
+import sourcepackage.se.kth.iv1350.hackers.util.*;
 
 /**
  * The application does not have an actual view, and this class
@@ -17,9 +18,14 @@ public class View {
     public View(Controller controller){
         this.controller = controller;
     }
-
+    /**
+     * Fake execution from the view.
+     * 
+     */
     public void sampleExecution(){
-        
+        Amount changeAmount;
+        changeAmount = controller.registerPayment(new Amount(200));
     }
 
+   
 }

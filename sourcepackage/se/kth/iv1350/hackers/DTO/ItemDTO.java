@@ -9,8 +9,6 @@ public final class ItemDTO{
     private final Amount itemPrice;
     private final Amount itemVAT;
 
-    // Hej
-    
     /**
      * Get a new instance representing a particular item.
      * 

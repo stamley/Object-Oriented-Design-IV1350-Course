@@ -1,10 +1,16 @@
 package sourcepackage.se.kth.iv1350.hackers.integration;
+import sourcepackage.se.kth.iv1350.hackers.DTO.SaleDTO;
+import java.util.ArrayList;
 
 public class SaleLog {
+    private ArrayList<SaleDTO> saleLog = new ArrayList<SaleDTO>();
+   
 
     /**
-     * Creates a new instance of SaleLog.
+     * Logs the current sale in the sale log
+     * @param saleInformation SaleDTO containing information of sale.
      */
-    SaleLog(){   
+    public void logSale(SaleDTO saleInformation){
+        saleLog.add(saleInformation);
     }
 }

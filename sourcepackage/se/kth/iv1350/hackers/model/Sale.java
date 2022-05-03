@@ -20,8 +20,10 @@ public class Sale {
      */
     public Sale(){
         this.totalPrice = new TotalPrice();
+        this.items = new HashMap<String, Item>();
         this.dateAndTime =  LocalDateTime.now();
-        
+        this.amountPaid = new Amount(0);
+        this.changeAmount = new Amount(0);
     }
 
     /**

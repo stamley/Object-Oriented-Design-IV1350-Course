@@ -3,8 +3,6 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 
 import sourcepackage.se.kth.iv1350.hackers.DTO.*;
-import sourcepackage.se.kth.iv1350.hackers.util.Amount;
-import java.util.HashMap;
 
 /**
  * The receipt of a Sale.
