@@ -2,7 +2,6 @@ package sourcepackage.se.kth.iv1350.hackers.controller;
 import sourcepackage.se.kth.iv1350.hackers.integration.*;
 import sourcepackage.se.kth.iv1350.hackers.model.Sale;
 import sourcepackage.se.kth.iv1350.hackers.model.Item;
-import sourcepackage.se.kth.iv1350.hackers.integration.InventorySystem;;
 import sourcepackage.se.kth.iv1350.hackers.util.Amount;
 import sourcepackage.se.kth.iv1350.hackers.DTO.SaleDTO;
 
@@ -70,6 +69,16 @@ public class Controller {
      * @return The final version of SaleDTO containing all sale information.
      */
     public SaleDTO endSale(){
-        currentSale.endSale();
+        return currentSale.endSale();
+    }
+    
+    /**
+     * Registers the customer payment, and receives the change
+     * 
+     * @param payment Customer payment.
+     * @return Change of sale as an amount.
+     */
+    public Amount registerPayment(Amount payment){
+        return currentSale.registerPayment(payment).getChangeAmount();
     }
 }

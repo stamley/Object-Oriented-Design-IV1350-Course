@@ -23,7 +23,8 @@ public class View {
      * 
      */
     public void sampleExecution(){
-        controller.registerPayment(new Amount(200));
+        Amount changeAmount;
+        changeAmount = controller.registerPayment(new Amount(200));
     }
 
    
