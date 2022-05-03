@@ -25,7 +25,12 @@ public class DiscountDatabaseTest {
         Amount amount = new Amount(0.1);
         String typeOfDiscount = "PlaceholderTypeOfDiscount";
 
+
         DiscountDTO discountDTO = new DiscountDTO(amount, typeOfDiscount);
+        System.out.println(discountDTO);
+        System.out.println(discountDatabase.discountRequest(100));
+
+
         DiscountDTO otherDiscountDTO = discountDatabase.discountRequest(100);
         
         boolean expResult = true;

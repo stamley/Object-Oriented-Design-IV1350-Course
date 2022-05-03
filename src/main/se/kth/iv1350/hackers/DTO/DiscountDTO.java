@@ -51,9 +51,15 @@ public final class DiscountDTO{
         if(this.totalDiscountPercentage != other.totalDiscountPercentage){
             return false;
         }
-        if(this.typeOfDiscount != other.typeOfDiscount){
+        if(this.typeOfDiscount.equals(other.typeOfDiscount)){
             return false;
         }
         return true;
     }
+
+    @Override
+    public String toString(){
+        return "Discount: " + totalDiscountPercentage.toString() + "\nType of discount: " + typeOfDiscount;
+    }
+
 }
