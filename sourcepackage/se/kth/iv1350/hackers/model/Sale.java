@@ -99,7 +99,7 @@ public class Sale {
      * @return a new updated <code>SaleDTO</code> with the applied discount
      */
     public SaleDTO applyDiscount (DiscountDTO discount){
-        this.paymentTotal = this.paymentTotal * discount.getTotalDiscountPercentage();
+        paymentTotal.getTotal() = paymentTotal.total.multiply(discount.getTotalDiscountPercentage());
         return new SaleDTO (this);
    } 
 
