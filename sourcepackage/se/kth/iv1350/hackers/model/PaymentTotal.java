@@ -8,14 +8,16 @@ import sourcepackage.se.kth.iv1350.hackers.util.Amount;
 public class PaymentTotal {
     private Amount total;
     private Amount totalIncludingVAT;
+    private Amount totalDiscountedIncludingVat;
 
     /**
      * Creates a new instance of payment total and totalVAT 
      * with an initial amount set to zero.
      */
     PaymentTotal(){
-        Amount total = new Amount(0);
-        Amount totalIncludingVAT = new Amount(0);
+        total = new Amount(0);
+        totalIncludingVAT = new Amount(0);
+        totalDiscountedIncludingVat = new Amount (0);
     }
 
     /**
@@ -34,6 +36,7 @@ public class PaymentTotal {
         this.total = total.increase(calculateTotal(itemQuantity, itemPrice));
         this.totalIncludingVAT = this.totalIncludingVAT.increase(calculateTotalIncludingVAT
                                                         (itemVAT, itemQuantity, itemPrice));
+        
     }
 
     /**
@@ -69,6 +72,14 @@ public class PaymentTotal {
   
         return totalIncludingVAT;
     }
+      /**
+     * Gets the value of totalDiscountedIncludingVat
+     * 
+     * @return The value of totalDiscountedIncludingVat
+     */
+    public Amount getTotalDiscountedIncludingVAT(){
+        return this.totalDiscountedIncludingVat;
+    }
 
     /**
      * Gets the value of total.
@@ -77,6 +88,13 @@ public class PaymentTotal {
      */
     public Amount getTotal(){
         return total;
+    }
+    /**
+     * This method sets the desired value of the discounted total price including vat
+     * @param amount
+     */
+    public void setTotalDiscountedIncludingVAT (Amount amount){
+        this.totalDiscountedIncludingVat = amount;
     }
 
 }

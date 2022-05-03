@@ -71,8 +71,8 @@ public class Sale {
     private void updateQuantity (Item item){
         Item existingItem = items.get(item.getItemIdentifier());
         existingItem.increaseQuantity(item.getQuantity());
-        items.put(existingItem.getItemIdentifier(), existingItem);
-        paymentTotal.UpdatePayment(item);
+        addItemToList(existingItem);
+        updateTotal(item);
     }
 
     /**
@@ -81,13 +81,15 @@ public class Sale {
      */
     private void addItemToList (Item item){
         items.put(item.getItemIdentifier(), item);
+        updateTotal(item);
+
     }
     /**
      * updates the total with the corresponding price of that item
      * @param item
      */
     private void updateTotal (Item item){
-        items.put(item.getItemIdentifier(), item);
+        // items.put(item.getItemIdentifier(), item);
         paymentTotal.UpdatePayment(item);
     }
 
@@ -99,8 +101,9 @@ public class Sale {
      * @return a new updated <code>SaleDTO</code> with the applied discount
      */
     public SaleDTO applyDiscount (DiscountDTO discount){
-        paymentTotal.getTotal() = paymentTotal.total.multiply(discount.getTotalDiscountPercentage());
-        return new SaleDTO (this);
+        paymentTotal.setTotalDiscountedIncludingVAT(paymentTotal.getTotalIncludingVAT().multiply(
+            discount.getTotalDiscountPercentage()));
+        return new SaleDTO (this.currentSale);
    } 
 
     /**
