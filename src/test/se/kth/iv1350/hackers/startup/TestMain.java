@@ -1,7 +1,6 @@
 package se.kth.iv1350.hackers.startup;
 import org.junit.jupiter.api.Test;
 
-
 public class TestMain {
 
     @Test
