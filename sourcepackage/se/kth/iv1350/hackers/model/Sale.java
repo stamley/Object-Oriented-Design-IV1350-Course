@@ -34,10 +34,13 @@ public class Sale {
      */
     public SaleDTO addItem(Item item){
         if (itemListContainsItem(item)){
-            updateQuantityAndTotal(item);
+            // updateQuantityAndTotal(item);
+            updateQuantity(item);
+            updateTotal(item);
         }
         else {
-            addItemAndUpdateTotal(item);
+            addItemToList(item);
+            updateTotal(item);
         }
         return new SaleDTO(paymentTotal, dateAndTime, items);
     }
@@ -58,20 +61,35 @@ public class Sale {
      * 
      * @param item The current item that is being added.
      */
-    private void updateQuantityAndTotal(Item item){
+    // private void updateQuantityAndTotal(Item item){
+    //     Item existingItem = items.get(item.getItemIdentifier());
+    //     existingItem.increaseQuantity(item.getQuantity());
+    //     items.put(existingItem.getItemIdentifier(), existingItem);
+    //     paymentTotal.UpdatePaymentTotal(item);
+
+    // }
+    private void updateQuantity (Item item){
         Item existingItem = items.get(item.getItemIdentifier());
         existingItem.increaseQuantity(item.getQuantity());
-        items.put(existingItem.getItemIdentifier(), existingItem);
-        paymentTotal.UpdatePayment(item);
+        addItemToList(existingItem);
+        updateTotal(item);
     }
 
     /**
-     * Adds a new item to the sale and update the total payment amount.
-     * 
+     * Adds a new item to the sale
      * @param item The item that is being added.
      */
-    private void addItemAndUpdateTotal(Item item){
+    private void addItemToList (Item item){
         items.put(item.getItemIdentifier(), item);
+        updateTotal(item);
+
+    }
+    /**
+     * updates the total with the corresponding price of that item
+     * @param item
+     */
+    private void updateTotal (Item item){
+        // items.put(item.getItemIdentifier(), item);
         paymentTotal.UpdatePayment(item);
     }
 
@@ -83,8 +101,9 @@ public class Sale {
      * @return a new updated <code>SaleDTO</code> with the applied discount
      */
     public SaleDTO applyDiscount (DiscountDTO discount){
-        this.paymentTotal = this.paymentTotal * discount.getTotalDiscountPercentage();
-        return new SaleDTO (this);
+        paymentTotal.setTotalDiscountedIncludingVAT(paymentTotal.getTotalIncludingVAT().multiply(
+            discount.getTotalDiscountPercentage()));
+        return new SaleDTO (this.currentSale);
    } 
 
     /**

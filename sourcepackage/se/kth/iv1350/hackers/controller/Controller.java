@@ -2,7 +2,6 @@ package sourcepackage.se.kth.iv1350.hackers.controller;
 import sourcepackage.se.kth.iv1350.hackers.integration.*;
 import sourcepackage.se.kth.iv1350.hackers.model.Sale;
 import sourcepackage.se.kth.iv1350.hackers.model.Item;
-import sourcepackage.se.kth.iv1350.hackers.integration.InventorySystem;;
 import sourcepackage.se.kth.iv1350.hackers.util.Amount;
 import sourcepackage.se.kth.iv1350.hackers.DTO.SaleDTO;
 
