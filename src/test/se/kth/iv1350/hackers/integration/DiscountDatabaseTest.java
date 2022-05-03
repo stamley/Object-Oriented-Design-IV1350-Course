@@ -16,12 +16,13 @@ public class DiscountDatabaseTest {
 
     @BeforeEach
     public void setupClass(){
-        DiscountDatabase discountDatabase = new DiscountDatabase();
+        
     }
 
 
     @Test
     public void testDiscountRequest() {
+        DiscountDatabase discountDatabase = new DiscountDatabase();
         Amount amount = new Amount(0.1);
         String typeOfDiscount = "PlaceholderTypeOfDiscount";
 
