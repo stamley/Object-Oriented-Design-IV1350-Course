@@ -33,5 +33,8 @@ public class ReceiptTest {
         }};
 
         SaleDTO saleDTO = new SaleDTO(totalPrice, localDateTime, items, amountPaid, changeAmount);
+
+        Receipt testReceipt = new Receipt(saleDTO);
+
     }
 }
