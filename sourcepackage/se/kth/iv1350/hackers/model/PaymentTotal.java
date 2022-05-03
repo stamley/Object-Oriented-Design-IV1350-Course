@@ -7,16 +7,15 @@ import sourcepackage.se.kth.iv1350.hackers.util.Amount;
 
 public class PaymentTotal {
     private Amount total;
-    private Amount totalVAT;
-    private Amount totalDiscounted;
+    private Amount totalIncludingVAT;
 
     /**
      * Creates a new instance of payment total and totalVAT 
-     * with initial amount set to zero.
+     * with an initial amount set to zero.
      */
     PaymentTotal(){
         Amount total = new Amount(0);
-        Amount totalVAT = new Amount(0);
+        Amount totalIncludingVAT = new Amount(0);
     }
 
     /**
@@ -24,10 +23,7 @@ public class PaymentTotal {
      * 
      * @param item The item that is being scanned.
      */
-    public void UpdatePaymentTotal(Item item){
-        /**
-         * EXCEPTION FOR SEMINAR 4.
-         */
+    public void UpdatePayment(Item item){
         if (item == null){
             return;
         }
@@ -35,9 +31,33 @@ public class PaymentTotal {
         Amount itemPrice = item.getItemDescription().getItemPrice();
         Amount itemVAT = item.getItemDescription().getItemVAT();
 
-        this.total = this.total.increase(itemQuantity.multiply(itemPrice));
+        this.total = total.increase(calculateTotal(itemQuantity, itemPrice));
+        this.totalIncludingVAT = this.totalIncludingVAT.increase(calculateTotalIncludingVAT
+                                                        (itemVAT, itemQuantity, itemPrice));
+    }
 
-        // this.totalVAT = this.totalVAT.increase(itemQuantity.multiply(itemVAT));
+    /**
+     * Calculates the total cost of the item(s).
+     * 
+     * @param itemQuantity The quantity of the specific item.
+     * @param itemPrice The price of one item.
+     * @return The product of itemQuantity and itemPrice.
+     */
+    private Amount calculateTotal(Amount itemQuantity, Amount itemPrice){
+       return itemQuantity.multiply(itemPrice);
+    }
+
+    /**
+     * Calculates the total cost of the item(s) including VAT.
+     * 
+     * @param itemVAT The VAT amount for a specific item.
+     * Assuming the VAT of an item is 5% the total is multiplied 1 + the VAT percentage.
+     * @param itemQuantity The quantity of the specific item.
+     * @param itemPrice The price of one item.
+     * @return The product of the total cost of the item(s) and item VAT amount.
+     */
+    private Amount calculateTotalIncludingVAT(Amount itemVAT, Amount itemQuantity, Amount itemPrice){
+        return itemVAT.multiply(calculateTotal(itemQuantity, itemPrice));
     }
 
     /**
@@ -46,7 +66,8 @@ public class PaymentTotal {
      * @return The value of totalIncludingVAT.
      */
     public Amount getTotalIncludingVAT(){
-        return totalVAT;
+  
+        return totalIncludingVAT;
     }
 
     /**
@@ -57,12 +78,5 @@ public class PaymentTotal {
     public Amount getTotal(){
         return total;
     }
-
-    
-
-
-
-
-    
 
 }
