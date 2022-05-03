@@ -1,4 +1,4 @@
-package testpackage.se.kth.iv1350.hackers.startup;
+package testpackage.se.kth.iv1350.hackers.startup.Main;
 import sourcepackage.se.kth.iv1350.hackers.startup.*;
 import org.junit.jupiter.api.Test;
 
