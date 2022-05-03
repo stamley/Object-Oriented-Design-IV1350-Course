@@ -1,6 +1,7 @@
 package sourcepackage.se.kth.iv1350.hackers.integration;
 import sourcepackage.se.kth.iv1350.hackers.model.Item;
 import sourcepackage.se.kth.iv1350.hackers.DTO.ItemDTO;
+import sourcepackage.se.kth.iv1350.hackers.DTO.SaleDTO;
 import sourcepackage.se.kth.iv1350.hackers.util.Amount;
 import java.util.HashMap;
 
@@ -10,12 +11,6 @@ import java.util.HashMap;
  */
 public class InventorySystem {
     private HashMap <String, ItemDTO> itemList = new HashMap<String, ItemDTO>();
-
-    /**
-     * Creates a new instance of InventorySystem.
-     */
-    InventorySystem(){
-    }
 
     /**
      * Checks if the searched item identifier exists in the database.
@@ -52,5 +47,12 @@ public class InventorySystem {
      */
     public Item getItem(String itemIdentifier, Amount quantity){
         return new Item(itemList.get(itemIdentifier), itemIdentifier, quantity); 
+    }
+
+    /**
+     * Updates the external inventory system 
+     */
+    public void updateInventorySystem (SaleDTO saleinformation){
+        
     }
 }

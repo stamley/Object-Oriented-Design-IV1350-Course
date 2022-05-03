@@ -61,5 +61,9 @@ public class Amount{
     public Amount setAmount(double amount){
         return new Amount(amount);
     }
+    @Override
+    public String toString() {
+        return this.amount + " ";
+    }
 
 }

@@ -9,7 +9,7 @@ import java.util.HashMap;
  * A representation of a sale.
  */
 public class Sale {
-    private PaymentTotal paymentTotal;
+    private TotalPrice totalPrice;
     private HashMap <String, Item> items = new HashMap<String, Item>();
     private LocalDateTime dateAndTime;
     private Amount amountPaid;
@@ -19,8 +19,9 @@ public class Sale {
      * Creates a new instance of sale with initial amount set to zero.
      */
     public Sale(){
-        this.paymentTotal = new PaymentTotal();
-        dateAndTime =  LocalDateTime.now();
+        this.totalPrice = new TotalPrice();
+        this.dateAndTime =  LocalDateTime.now();
+        
     }
 
     /**
@@ -34,19 +35,20 @@ public class Sale {
      */
     public SaleDTO addItem(Item item){
         if (itemListContainsItem(item)){
-            updateQuantity(item);
-            updateTotal(item);
+            // updateQuantityAndTotal(item);
+            this.updateQuantity(item);
+            this.updateTotal(item);
+
         }
         else {
-            addItemToList(item);
-            updateTotal(item);
+            this.addItemToList(item);
+            this.updateTotal(item);
         }
-        return new SaleDTO(paymentTotal, dateAndTime, items);
+        return new SaleDTO(this);
     }
 
     /**
      * Checks if the scanned item already exist in the HashMap.
-     * 
      * @param item The current item that is being added.
      * @return <code>true</code> if the item exists in the HashMap.
      * returns <code>false</code> if the item 
@@ -83,7 +85,7 @@ public class Sale {
      * @param item
      */
     private void updateTotal (Item item){
-        paymentTotal.UpdatePayment(item);
+        totalPrice.UpdatePrice(item);
     }
 
      /**
@@ -94,7 +96,7 @@ public class Sale {
      * @return a new updated <code>SaleDTO</code> with the applied discount
      */
     public SaleDTO applyDiscount (DiscountDTO discount){
-        paymentTotal.setTotalDiscountedIncludingVAT(paymentTotal.getTotalIncludingVAT().multiply(
+        totalPrice.setTotalDiscountedIncludingVAT(totalPrice.getTotalIncludingVAT().multiply(
             discount.getTotalDiscountPercentage()));
         return new SaleDTO (this);
    } 
@@ -104,8 +106,8 @@ public class Sale {
      * 
      * @return the totalPrice.
      */
-    public PaymentTotal getTotalPrice(){
-        return paymentTotal;
+    public TotalPrice getTotalPrice(){
+        return totalPrice;
     }
 
     /**
@@ -143,4 +145,8 @@ public class Sale {
     public Amount getChangeAmount(){
         return this.changeAmount;
     } 
+
+    public void registerPayment (Amount payment){
+    
+    }
 }
