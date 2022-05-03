@@ -156,7 +156,8 @@ public class Sale {
         return this.changeAmount;
     } 
 
-    public void registerPayment (Amount payment){
-    
+    public SaleDTO registerPayment (Amount payment){
+        amountPaid = payment;
+        return new SaleDTO (this);
     }
 }
