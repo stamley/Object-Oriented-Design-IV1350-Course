@@ -61,9 +61,25 @@ public class Amount{
     public Amount setAmount(double amount){
         return new Amount(amount);
     }
+
     @Override
     public String toString() {
         return this.amount + " ";
     }
 
+    /**
+     * Compares if two instances of <code>Amount</code> represent the same amount.
+     * 
+     * @param other The <code>Amount</code> to be compared with this amount.
+     * @return <code>true</code> if the two objects represent the same amount.
+     * returns <code>false</code> if the two objects represent different amounts.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || !(other instanceof Amount)) {
+            return false;
+        }
+        Amount otherAmount = (Amount)other;
+        return amount == otherAmount.amount;
+    }
 }

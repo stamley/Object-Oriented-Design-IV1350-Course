@@ -43,15 +43,16 @@ public final class DiscountDTO{
         if(otherObj == null){
             return false;
         }
-        if(this.getClass() != otherObj.getClass()){
+        if(getClass() != otherObj.getClass()){
             return false;
         }
         
         final DiscountDTO other = (DiscountDTO) otherObj;
-        if(this.totalDiscountPercentage != other.totalDiscountPercentage){
+
+        if(this.getTotalDiscountPercentage().getAmount() != other.getTotalDiscountPercentage().getAmount()){
             return false;
         }
-        if(this.typeOfDiscount.equals(other.typeOfDiscount)){
+        if(!this.getTypeOfDiscount().equals(other.getTypeOfDiscount())){
             return false;
         }
         return true;
