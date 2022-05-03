@@ -24,9 +24,14 @@ public class DiscountDatabaseTest {
     public void testDiscountRequest() {
         Amount amount = new Amount(0.1);
         String typeOfDiscount = "PlaceholderTypeOfDiscount";
-        DiscountDTO expResult = new DiscountDTO(amount, typeOfDiscount);
-        DiscountDTO result = discountDatabase.discountRequest(100);
-        assertEquals(expResult, result, "The expected DiscountDTO did not correspond with the resulting DiscountDTO");
+
+        DiscountDTO discountDTO = new DiscountDTO(amount, typeOfDiscount);
+        DiscountDTO otherDiscountDTO = discountDatabase.discountRequest(100);
+        
+        boolean expResult = true;
+        boolean result = discountDTO.equals(otherDiscountDTO);
+        
+        assertEquals(expResult, result, "DiscountDTO with the same states are not equal.");
     }
 
     @Test
