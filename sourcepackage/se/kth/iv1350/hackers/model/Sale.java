@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public class Sale {
     private PaymentTotal paymentTotal;
-    private HashMap <String, Item> items = new HashMap<String, Item>();
+    private HashMap <String, Item> items;
     private LocalDateTime dateAndTime;
     private Amount amountPaid;
     private Amount changeAmount;
@@ -20,7 +20,10 @@ public class Sale {
      */
     public Sale(){
         this.paymentTotal = new PaymentTotal();
-        dateAndTime =  LocalDateTime.now();
+        this.items = new HashMap<String, Item>();
+        this.dateAndTime =  LocalDateTime.now();
+        this.amountPaid = new Amount(0);
+        this.changeAmount = new Amount(0);
     }
 
     /**
