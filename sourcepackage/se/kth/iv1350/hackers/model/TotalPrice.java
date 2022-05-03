@@ -5,27 +5,27 @@ import sourcepackage.se.kth.iv1350.hackers.util.Amount;
  * A representation of the total amount to be paid including VAT.
  */
 
-public class PaymentTotal {
+public class TotalPrice {
     private Amount total;
     private Amount totalIncludingVAT;
     private Amount totalDiscountedIncludingVat;
 
     /**
-     * Creates a new instance of payment total and totalVAT 
+     * Creates a new instance of price total and totalVAT 
      * with an initial amount set to zero.
      */
-    PaymentTotal(){
+    TotalPrice(){
         total = new Amount(0);
         totalIncludingVAT = new Amount(0);
         totalDiscountedIncludingVat = new Amount (0);
     }
 
     /**
-     * Updates payment total and with and without VAT.
+     * Updates price total and with and without VAT.
      * 
      * @param item The item that is being scanned.
      */
-    public void UpdatePayment(Item item){
+    public void UpdatePrice(Item item){
         if (item == null){
             return;
         }

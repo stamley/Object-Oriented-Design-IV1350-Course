@@ -1,5 +1,6 @@
 package sourcepackage.se.kth.iv1350.hackers.integration;
 import sourcepackage.se.kth.iv1350.hackers.DTO.DiscountDTO;
+import sourcepackage.se.kth.iv1350.hackers.DTO.SaleDTO;
 import sourcepackage.se.kth.iv1350.hackers.model.Item;
 import sourcepackage.se.kth.iv1350.hackers.util.Amount;
 
@@ -51,6 +52,14 @@ public class DBController {
 
     public DiscountDTO discountRequest(int customerID){
         return discountDatabase.discountRequest(customerID);
+    }
+    /**
+     * this method updates the external databases using their corresponding methods.
+     * @param saleinformation
+     */
+    public void updateExternalSystems (SaleDTO saleinformation){
+        accountingSystem.updateAccountingSystem(saleinformation);
+        inventorySystem.updateInventorySystem(saleinformation);
     }
 
 }

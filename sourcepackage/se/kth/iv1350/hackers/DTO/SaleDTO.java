@@ -8,7 +8,7 @@ import java.util.HashMap;
  * Contains information about one particular sale.
  */
 public final class SaleDTO{
-    private final PaymentTotal paymentTotal;
+    private final TotalPrice totalPrice;
     private final LocalDateTime localDateTime;
     private HashMap <String, Item> items = new HashMap<String, Item>();
     private Amount amountPaid;
@@ -29,26 +29,12 @@ public final class SaleDTO{
      * @param currentSale
      */
     public SaleDTO(Sale currentSale){
-        this.paymentTotal = currentSale.getTotalPrice();
+        this.totalPrice = currentSale.getTotalPrice();
         this.localDateTime = currentSale.getLocalDateTime();
         this.items = currentSale.getItems();
         this.amountPaid = currentSale.getAmountPaid();
         this.changeAmount = currentSale.getChangeAmount();
-    }
-    
-    /**
-     * Creates a new instance representing a particular sale without any information
-     * regarding the actual payment from the customer.
-     * 
-     * @param paymentTotal The sale's total running price.
-     * @param dateAndTime  The current date and time.
-     * @param items        The list containing all items.
-     */
-    public SaleDTO(PaymentTotal paymentTotal, LocalDateTime dateAndTime,
-    HashMap<String,Item> items){
-        this.paymentTotal = paymentTotal;
-        this.localDateTime = dateAndTime;
-        this.items = items;
+
     }
   
     /**
@@ -56,8 +42,8 @@ public final class SaleDTO{
      * 
      * @return the value of totalRunningPrice.
      */
-    public PaymentTotal getPaymentTotal(){
-        return this.paymentTotal;
+    public TotalPrice getTotalPrice(){
+        return this.totalPrice;
     }
 
     /**
@@ -66,7 +52,8 @@ public final class SaleDTO{
      * @return the value of dateAndTime.
      */
     public LocalDateTime getDateAndTime(){
-        return this.localDateTime;
+        return localDateTime;
+
     }
 
     /**
