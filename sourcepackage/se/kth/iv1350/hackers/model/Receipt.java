@@ -24,7 +24,7 @@ public class Receipt{
      * 
      * @return receipt string
      */
-    public String toString() {
+    public String receiptToString(){
         StringBuilder sb = new StringBuilder();
         appendLine(sb, "Point of Sale");
         endSection(sb);
@@ -44,15 +44,16 @@ public class Receipt{
             sb.append(value.toString());
         }
 
-        PaymentTotal totalPrice = saleInformation.getPaymentTotal();
-        Amount amountPaid = saleInformation.getAmountPaid();
-        Amount changeAmount = saleInformation.getChangeAmount();
         sb.append("Total price:");
-        appendLine(sb, totalPrice.toString());
+        appendLine(sb, saleInformation.getPaymentTotal().getTotal().toString());
+        sb.append("Total price incl. VAT:");
+        appendLine(sb, saleInformation.getPaymentTotal().getTotalIncludingVAT().toString());
+        sb.append("Total price incl. VAT and discount:");
+        appendLine(sb, saleInformation.getPaymentTotal().getTotalDiscountedIncludingVAT());
         sb.append("Amound paid:");
-        appendLine(sb, amountPaid.toString());
+        appendLine(sb, saleInformation.getAmountPaid().toString());
         sb.append("Change");
-        appendLine(sb, changeAmount.toString());
+        appendLine(sb, saleInformation.getChangeAmount().toString());
         endSection(sb);
 
         return sb.toString();
