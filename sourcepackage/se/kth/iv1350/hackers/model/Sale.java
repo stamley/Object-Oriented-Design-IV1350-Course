@@ -20,7 +20,9 @@ public class Sale {
      */
     public Sale(){
         this.paymentTotal = new PaymentTotal();
-        dateAndTime =  LocalDateTime.now();
+        this.dateAndTime =  LocalDateTime.now();
+
+        
     }
 
     /**
@@ -35,19 +37,18 @@ public class Sale {
     public SaleDTO addItem(Item item){
         if (itemListContainsItem(item)){
             // updateQuantityAndTotal(item);
-            updateQuantity(item);
-            updateTotal(item);
+            this.updateQuantity(item);
+            this.updateTotal(item);
         }
         else {
-            addItemToList(item);
-            updateTotal(item);
+            this.addItemToList(item);
+            this.updateTotal(item);
         }
-        return new SaleDTO(paymentTotal, dateAndTime, items);
+        return new SaleDTO(this);
     }
 
     /**
      * Checks if the scanned item already exist in the HashMap.
-     * 
      * @param item The current item that is being added.
      * @return <code>true</code> if the item exists in the HashMap.
      * returns <code>false</code> if the item 
