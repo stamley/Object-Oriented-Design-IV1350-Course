@@ -101,7 +101,17 @@ public class Sale {
         totalPrice.setTotalDiscountedIncludingVAT(totalPrice.getTotalIncludingVAT().multiply(
             discount.getTotalDiscountPercentage()));
         return new SaleDTO (this);
-   } 
+   }
+
+    /**
+    * Finalizes the sale. 
+    *
+    * @param currentSale The current sale that is being processed.
+    * @return The final version of SaleDTO containing all the sale information.
+    */
+   public SaleDTO endSale(){
+       return new SaleDTO(this);
+   }
 
     /**
      * Gets the value of totalPrice.
