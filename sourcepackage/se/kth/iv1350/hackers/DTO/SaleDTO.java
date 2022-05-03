@@ -8,7 +8,7 @@ import java.util.HashMap;
  * Contains information about one particular sale.
  */
 public final class SaleDTO{
-    private final PaymentTotal paymentTotal;
+    private final TotalPrice totalPrice;
     private final LocalDateTime localDateTime;
     private HashMap <String, Item> items = new HashMap<String, Item>();
     private Amount amountPaid;
@@ -29,7 +29,7 @@ public final class SaleDTO{
      * @param currentSale
      */
     public SaleDTO(Sale currentSale){
-        this.paymentTotal = currentSale.getTotalPrice();
+        this.totalPrice = currentSale.getTotalPrice();
         this.localDateTime = currentSale.getLocalDateTime();
         this.items = currentSale.getItems();
         this.amountPaid = currentSale.getAmountPaid();
@@ -42,8 +42,8 @@ public final class SaleDTO{
      * 
      * @return the value of totalRunningPrice.
      */
-    public PaymentTotal getPaymentTotal(){
-        return paymentTotal;
+    public TotalPrice getTotalPrice(){
+        return this.totalPrice;
     }
 
     /**

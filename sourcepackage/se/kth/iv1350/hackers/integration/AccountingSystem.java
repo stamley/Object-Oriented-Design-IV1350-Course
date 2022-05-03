@@ -1,10 +1,10 @@
 package sourcepackage.se.kth.iv1350.hackers.integration;
 
+import sourcepackage.se.kth.iv1350.hackers.DTO.SaleDTO;
+
 public class AccountingSystem {
     
-    /**
-     * Creates a new instance of AccountingSystem.
-     */
-    AccountingSystem(){
+    public void updateAccountingSystem (SaleDTO saleinformation){
+        
     }
 }

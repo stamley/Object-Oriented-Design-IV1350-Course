@@ -9,7 +9,7 @@ import java.util.HashMap;
  * A representation of a sale.
  */
 public class Sale {
-    private PaymentTotal paymentTotal;
+    private TotalPrice totalPrice;
     private HashMap <String, Item> items = new HashMap<String, Item>();
     private LocalDateTime dateAndTime;
     private Amount amountPaid;
@@ -19,9 +19,8 @@ public class Sale {
      * Creates a new instance of sale with initial amount set to zero.
      */
     public Sale(){
-        this.paymentTotal = new PaymentTotal();
+        this.totalPrice = new TotalPrice();
         this.dateAndTime =  LocalDateTime.now();
-
         
     }
 
@@ -66,7 +65,7 @@ public class Sale {
     //     Item existingItem = items.get(item.getItemIdentifier());
     //     existingItem.increaseQuantity(item.getQuantity());
     //     items.put(existingItem.getItemIdentifier(), existingItem);
-    //     paymentTotal.UpdatePaymentTotal(item);
+    //     totalPrice.UpdatetotalPrice(item);
 
     // }
     private void updateQuantity (Item item){
@@ -91,7 +90,7 @@ public class Sale {
      */
     private void updateTotal (Item item){
         // items.put(item.getItemIdentifier(), item);
-        paymentTotal.UpdatePayment(item);
+        totalPrice.UpdatePrice(item);
     }
 
      /**
@@ -102,7 +101,7 @@ public class Sale {
      * @return a new updated <code>SaleDTO</code> with the applied discount
      */
     public SaleDTO applyDiscount (DiscountDTO discount){
-        paymentTotal.setTotalDiscountedIncludingVAT(paymentTotal.getTotalIncludingVAT().multiply(
+        totalPrice.setTotalDiscountedIncludingVAT(totalPrice.getTotalIncludingVAT().multiply(
             discount.getTotalDiscountPercentage()));
         return new SaleDTO (this);
    } 
@@ -111,8 +110,8 @@ public class Sale {
      * Gets the value of totalPrice.
      * @return the totalPrice.
      */
-    public PaymentTotal getTotalPrice(){
-        return paymentTotal;
+    public TotalPrice getTotalPrice(){
+        return totalPrice;
     }
 
     /**
@@ -148,4 +147,8 @@ public class Sale {
     public Amount getChangeAmount(){
         return this.changeAmount;
     } 
+
+    public void registerPayment (Amount payment){
+    
+    }
 }
