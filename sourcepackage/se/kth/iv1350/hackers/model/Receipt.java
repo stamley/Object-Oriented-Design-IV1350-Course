@@ -1,6 +1,8 @@
 package sourcepackage.se.kth.iv1350.hackers.model;
 import java.time.LocalDateTime;
 import sourcepackage.se.kth.iv1350.hackers.DTO.*;
+import sourcepackage.se.kth.iv1350.hackers.util.Amount;
+import java.util.HashMap;
 
 /**
  * The receipt of a Sale.
@@ -34,6 +36,7 @@ public class Receipt{
 
         sb.append("Sale");
 
+        HashMap<String, Item> items = saleInformation.getItemList();
         for (HashMap.Entry<String, Item> entry : items.entrySet()){
             String key = entry.getKey();
             Item value = entry.getValue();
@@ -41,12 +44,15 @@ public class Receipt{
             sb.append(value.toString());
         }
 
+        PaymentTotal totalPrice = saleInformation.getPaymentTotal();
+        Amount amountPaid = saleInformation.getAmountPaid();
+        Amount changeAmount = saleInformation.getChangeAmount();
         sb.append("Total price:");
-        appendLine(sb, /*get totalprice*/);
+        appendLine(sb, totalPrice.toString());
         sb.append("Amound paid:");
-        appendLine(sb, /* get amountPaid*/);
+        appendLine(sb, amountPaid.toString());
         sb.append("Change");
-        appendLine(sb, /* get change*/);
+        appendLine(sb, changeAmount.toString());
         endSection(sb);
 
         return sb.toString();
