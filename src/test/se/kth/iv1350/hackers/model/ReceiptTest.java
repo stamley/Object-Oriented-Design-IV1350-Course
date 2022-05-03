@@ -1,13 +1,14 @@
 package se.kth.iv1350.hackers.model;
 
+import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import se.kth.iv1350.hackers.DTO.*;
 import se.kth.iv1350.hackers.util.*;
 import org.junit.Test;
 
-public class ReceiptTest {
 
+public class ReceiptTest {
     @Test
     public void testReceiptToString() {
         Amount total = new Amount(100);
@@ -35,6 +36,16 @@ public class ReceiptTest {
         SaleDTO saleDTO = new SaleDTO(totalPrice, localDateTime, items, amountPaid, changeAmount);
 
         Receipt testReceipt = new Receipt(saleDTO);
+
+        String expResult = "\n\n: " + itemName +
+                            "\nCost: " + itemPrice +
+                            "\nChange: " + itemVAT +
+                            "\n\n";
+
+        String result = testReceipt.receiptToString();
+        assertTrue(result.contains(expResult), "Wrong printout!");
+        assertTrue(result.contains(Integer.toString(localDateTime.getDayOfMonth())),
+                            "Wrong rental day.");
 
     }
 }
