@@ -6,7 +6,6 @@ import se.kth.iv1350.hackers.util.Amount;
  * A representation of a discount database.
  */
 public class DiscountDatabase {
-    
     /**
      * Creates an instance of discount DTO based on the customerID.
      * 
