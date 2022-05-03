@@ -1,4 +1,5 @@
 package se.kth.iv1350.hackers.view;
+import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.controller.Controller;
 import se.kth.iv1350.hackers.util.*;
 
@@ -23,7 +24,14 @@ public class View {
      * 
      */
     public void sampleExecution(){
+        SaleDTO saleInformation;
         Amount changeAmount;
+
+        controller.initiateSale();
+        saleInformation = controller.addItem("1234", new Amount(3));
+        saleInformation = controller.discountedSaleRequest(123);
+        saleInformation = controller.endSale();
+        
         changeAmount = controller.registerPayment(new Amount(200));
     }
 

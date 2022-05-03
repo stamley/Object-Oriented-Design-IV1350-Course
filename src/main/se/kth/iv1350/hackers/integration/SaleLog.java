@@ -14,4 +14,8 @@ public class SaleLog {
     public void logSale(SaleDTO saleInformation){
         saleLog.add(saleInformation);
     }
+
+    public ArrayList<SaleDTO> getArrayList(){
+        return saleLog;
+    }
 }
