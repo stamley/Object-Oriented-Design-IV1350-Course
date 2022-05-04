@@ -12,10 +12,11 @@ import se.kth.iv1350.hackers.controller.Controller;
 
 public class ControllerTest {
     private Controller controller;
+    private SaleDTO saleDTO;
 
     @BeforeEach
     public void setUp(){
-        Controller controller = new Controller(new IOController(), new DBController());
+        controller = new Controller(new IOController(), new DBController());
     }
     
     @After
@@ -27,8 +28,7 @@ public class ControllerTest {
     public void addItemTest(){
         String itemIdentifier = "12345";
         Amount quantity = new Amount(5);
-
-        SaleDTO result = controller.addItem(itemIdentifier, quantity);
+        saleDTO = controller.addItem(itemIdentifier, quantity);
     }
 
 }

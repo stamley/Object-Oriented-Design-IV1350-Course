@@ -8,15 +8,18 @@ import org.junit.jupiter.api.Test;
 
 public class AmountTest {
     private Amount amountWithTwo;
+    private Amount amountWithZero;
     
     @BeforeEach
     public void setUp(){
-        Amount amountWithTwo = new Amount(2);
+       amountWithTwo = new Amount(2);
+       amountWithZero = new Amount(0);
     }
 
     @AfterEach
     void tearDown(){
         amountWithTwo = null;
+        amountWithZero = null;
     }
 
     @Test
@@ -123,4 +126,14 @@ public class AmountTest {
         Amount result = operand1.multiply(operand2);
         assertEquals(expectedResult, result, "Wrong multiplication result");
     }
+
+    @Test
+    public void testNotEqualsJavaLangObject(){
+        Object other = new Object();
+        boolean expRes = false;
+        boolean result = amountWithZero.equals(other);
+        assertEquals(expRes, result,    "Amount instance equal java.lang.Object.");
+    }
+
+
 }
