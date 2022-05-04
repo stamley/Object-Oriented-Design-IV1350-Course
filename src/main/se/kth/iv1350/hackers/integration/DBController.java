@@ -65,6 +65,6 @@ public class DBController {
     }
 
     public void addItemToInventorySystem(Item item){
-        inventorySystem.addItemToInventorySystem(item);;
+        inventorySystem.addItemToInventorySystem(item);
     }
 }
