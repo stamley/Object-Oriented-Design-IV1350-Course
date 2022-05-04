@@ -54,7 +54,7 @@ public class Sale {
      * returns <code>false</code> if the item 
      */
     private boolean itemListContainsItem(Item item){
-        System.out.println ("Checks if " + item.getItemDescription().getItemName() + " already exists on the item list");
+        System.out.println ("Sale: Checks if " + item.getItemDescription().getItemName() + " exists on the item list");
         return items.containsKey(item.getItemIdentifier());
     }
 
@@ -66,7 +66,7 @@ public class Sale {
     private void updateQuantity (Item item){
         Item existingItem = items.get(item.getItemIdentifier());
         existingItem.increaseQuantity(item.getQuantity());
-        System.out.println("Increasing the quantity of" + item.getItemDescription().getItemName() + "\n");
+        System.out.println("Sale: Increasing the quantity of" + item.getItemDescription().getItemName() + "\n");
         addItemToList(existingItem);
         updateTotal(item);
     }
@@ -78,7 +78,7 @@ public class Sale {
     */
     private void addItemToList (Item item){
         items.put(item.getItemIdentifier(), item);
-        System.out.println("adding " + item.getItemDescription().getItemName() + " to the Sale\n");
+        System.out.println("Sale: adding " + item.getItemDescription().getItemName() + " to the Sale");
         updateTotal(item);
 
     }
@@ -89,7 +89,7 @@ public class Sale {
      */
     private void updateTotal (Item item){
         totalPrice.UpdatePrice(item);
-        System.out.println("Updating the total price: " + totalPrice.getTotal().getAmount() + " with the item: " + item.getItemDescription().getItemName() + "\n");
+        System.out.println("Sale: Updating the total price: " + totalPrice.getTotal().getAmount() + " with the item: " + item.getItemDescription().getItemName());
     }
 
      /**
