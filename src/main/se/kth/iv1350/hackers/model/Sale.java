@@ -158,14 +158,14 @@ public class Sale {
 
     /**
      * Registers customer payment by asserting amount paid in currentSale, 
-     * and creates a new SaleDTO based on the sale.
+     * and calculates change.
      * @param payment Customer payment.
-     * @return SaleDTO.
+     * @return change in form of Amount
      */
 
-    public SaleDTO registerPayment (Amount payment){
-        amountPaid = payment;
-        changeAmount = totalPrice.getTotalDiscountedIncludingVAT().decrease(amountPaid);
-        return new SaleDTO (this);
+    public Amount registerPayment (Amount payment){
+        this.amountPaid = payment;
+        this.changeAmount = totalPrice.getTotalDiscountedIncludingVAT().decrease(amountPaid);
+        return this.changeAmount;
     }
 }
