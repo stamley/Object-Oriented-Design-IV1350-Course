@@ -3,8 +3,14 @@ import java.util.ArrayList;
 
 import se.kth.iv1350.hackers.DTO.SaleDTO;
 
-public class SaleLog {
+class SaleLog {
     private ArrayList<SaleDTO> saleLog = new ArrayList<SaleDTO>();
+    /**
+     * This is a package private constructor method
+     */
+    SaleLog(){
+
+    }
    
 
     /**

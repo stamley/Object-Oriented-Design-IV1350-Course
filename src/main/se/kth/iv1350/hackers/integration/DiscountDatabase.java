@@ -7,6 +7,12 @@ import se.kth.iv1350.hackers.util.Amount;
  */
 public class DiscountDatabase {
     /**
+     * This is a package private constructor 
+     */
+    DiscountDatabase(){
+
+    }
+    /**
      * Creates an instance of discount DTO based on the customerID.
      * 
      * @param customerID Checks eligibility of discount.
