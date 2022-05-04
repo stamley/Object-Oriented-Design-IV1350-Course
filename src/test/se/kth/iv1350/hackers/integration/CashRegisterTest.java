@@ -25,8 +25,7 @@ public class CashRegisterTest {
         double expResult = 100; 
         double result = cashRegister.getBalance().getAmount(); 
         
-        assertEquals(expResult, result);
-        fail("Amount object does not contain the specified value.");
+        assertEquals(expResult, result, "Amount object does not contain the specified value.");
     }
 
     @Test

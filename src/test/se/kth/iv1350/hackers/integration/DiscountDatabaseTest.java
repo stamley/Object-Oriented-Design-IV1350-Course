@@ -21,7 +21,7 @@ public class DiscountDatabaseTest {
 
     @Test
     public void testDiscountRequest() {
-        Amount amount = new Amount(0.1);
+        Amount amount = new Amount(0.9);
         String typeOfDiscount = "PlaceholderTypeOfDiscount";
 
 

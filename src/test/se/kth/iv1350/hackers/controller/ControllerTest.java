@@ -1,7 +1,7 @@
 package se.kth.iv1350.hackers.controller;
 
-import org.junit.After;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,7 +23,7 @@ public class ControllerTest {
         saleDTO = new SaleDTO(currentSale);
     }
     
-    @After
+    @AfterEach
     public void tearDown(){
         controller = null;
         saleDTO = null;
@@ -35,10 +35,11 @@ public class ControllerTest {
         String itemName = "Tomato";
         Amount costOfItem = new Amount(5);
         Amount VATOfItem = new Amount(20);
-        Item itemToAdd = new Item(new ItemDTO(itemName, costOfItem, VATOfItem), "1122", new Amount(2));
+        Item itemToAdd = new Item(new ItemDTO(itemName, costOfItem, VATOfItem), "128886678", new Amount(2));
         
         Amount quantity = new Amount (5);
-        saleDTO = controller.addItem("1122", quantity);
+        controller.addItemToInventorySystem(itemToAdd);
+        saleDTO = controller.addItem("128886678", quantity);
 
         boolean expectedResult = true;
         String first = saleDTO.getItemList().get("1122").getItemDescription().getItemName();
