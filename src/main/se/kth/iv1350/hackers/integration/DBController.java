@@ -40,7 +40,9 @@ public class DBController {
       * @return The requested item. 
       */
     public Item getItem(String identifier,Amount quantity){
-        return inventorySystem.getItem(identifier, quantity);
+        Item fetchItemFromDatabase = inventorySystem.getItem(identifier, quantity);
+        System.out.println("Database-Controller Requests item from the InventorySystem");
+        return fetchItemFromDatabase;
     }
 
     /**
@@ -62,4 +64,7 @@ public class DBController {
         inventorySystem.updateInventorySystem(saleinformation);
     }
 
+    public void addItemToInventorySystem(Item item){
+        inventorySystem.addItemToInventorySystem(item);;
+    }
 }

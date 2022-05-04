@@ -1,6 +1,8 @@
 package se.kth.iv1350.hackers.view;
+import se.kth.iv1350.hackers.DTO.ItemDTO;
 import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.controller.Controller;
+import se.kth.iv1350.hackers.model.Item;
 import se.kth.iv1350.hackers.util.*;
 
 /**
@@ -26,15 +28,22 @@ public class View {
     public void sampleExecution(){
         SaleDTO saleInformation;
         Amount changeAmount;
+        ItemDTO äppleDTO = new ItemDTO("Äpple", new Amount(4), new Amount (2));
+        Item äpple = new Item (äppleDTO, "128886678", new Amount(1.0));
+        controller.addItemToInventorySystem(äpple);
+
+        ItemDTO tomatDTO = new ItemDTO("Tomat", new Amount(5), new Amount (3));
+        Item tomat = new Item (tomatDTO, "238886679", new Amount(1.0));
+        controller.addItemToInventorySystem(tomat);
 
         controller.initiateSale();
-        saleInformation = controller.addItem("1234", new Amount(3));
+        
+        saleInformation = controller.addItem("128886678", new Amount(3));
         saleInformation = controller.discountedSaleRequest(123);
+        changeAmount = controller.registerPayment(new Amount(200));
         saleInformation = controller.endSale();
         controller.logSale(saleInformation);
-        controller.printReceipt();
         
-        changeAmount = controller.registerPayment(new Amount(200));
     }
 
    

@@ -26,37 +26,36 @@ public class Receipt{
      */
     public String receiptToString(){
         StringBuilder sb = new StringBuilder();
-        appendLine(sb, "Point of Sale");
+        appendLine(sb, "Point of sale");
         endSection(sb);
 
         LocalDateTime currentTime = LocalDateTime.now();
-        sb.append("Sale time");
+        sb.append("Sale time ");
         appendLine(sb, currentTime.toString());
         endSection(sb);
 
-        sb.append("Sale");
+        sb.append("Sale ");
 
         HashMap<String, Item> items = saleInformation.getItemList();
         for (HashMap.Entry<String, Item> entry : items.entrySet()){
             String key = entry.getKey();
             Item value = entry.getValue();
-            sb.append(key);
-            sb.append(value.toString());
+            appendLine(sb,key);
+            sb.append(value.getItemDescription().getItemName());
+            sb.append(" " + Double.toString(value.getQuantity().getAmount()));
         }
+        sb.append ("\n");
 
-        /*
-        sb.append("Total price:");
-        appendLine(sb, String.valueOf((Double)saleInformation.getTotalPrice().getTotal().getAmount()));
-        sb.append("Total price incl. VAT:");
+        sb.append("Total price: ");
+        appendLine(sb, Double.toString(saleInformation.getTotalPrice().getTotal().getAmount()));
+        sb.append("Total price incl. VAT: ");
         appendLine(sb, Double.toString(saleInformation.getTotalPrice().getTotalIncludingVAT().getAmount()));
-        sb.append("Total price incl. VAT and discount:");
+        sb.append("Total price incl. VAT and discount: ");
         appendLine(sb, Double.toString(saleInformation.getTotalPrice().getTotalDiscountedIncludingVAT().getAmount()));
-        */
-        
-        sb.append("Amound paid:");
-        appendLine(sb, saleInformation.getAmountPaid().toString());
-        sb.append("Change");
-        appendLine(sb, saleInformation.getChangeAmount().toString());
+        sb.append("Amount paid: ");
+        appendLine(sb, Double.toString(saleInformation.getAmountPaid().getAmount()));
+        sb.append("Change: ");
+        appendLine(sb, Double.toString(saleInformation.getChangeAmount().getAmount()));
         endSection(sb);
 
         return sb.toString();

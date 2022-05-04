@@ -37,15 +37,17 @@ public class ReceiptTest {
 
         Receipt testReceipt = new Receipt(saleDTO);
 
-        String expResult = "\n\n: " + itemName +
-                            "\nCost: " + itemPrice +
-                            "\nChange: " + itemVAT +
-                            "\n\n";
+        String expResult = itemIdentifier + itemName + Double.toString(itemQuantity.getAmount())
+                            + "Total price:" + Double.toString(total.getAmount())
+                            + "\n" + "Total price incl. VAT:" + Double.toString(totalIncludingVAT.getAmount())
+                            + "\n" + "Total price incl. VAT and discount:" + Double.toString(totalDiscountedIncludingVAT.getAmount())
+                            + "\n" + "Amount paid:" + Double.toString(amountPaid.getAmount())
+                            + "\n" + "Change" + Double.toString(changeAmount.getAmount());
 
         String result = testReceipt.receiptToString();
         assertTrue(result.contains(expResult), "Wrong printout!");
         assertTrue(result.contains(Integer.toString(localDateTime.getDayOfMonth())),
                             "Wrong rental day.");
+        }
 
     }
-}
