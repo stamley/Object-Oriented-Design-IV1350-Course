@@ -1,4 +1,4 @@
-package test.se.kth.iv1350.hackers.model;
+package se.kth.iv1350.hackers.model;
 
 import org.junit.Test;
 

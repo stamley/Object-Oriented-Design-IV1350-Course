@@ -24,7 +24,7 @@ public class TotalPrice {
      * Creates a new instance of price total and totalVAT 
      * with an initial amount set to zero.
      */
-    TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
+    public TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
         this.total = total;
         this.totalIncludingVAT = totalIncludingVAT;
         this.totalDiscountedIncludingVAT = totalDiscountedIncludingVAT;
