@@ -1,5 +1,6 @@
 package se.kth.iv1350.hackers.startup;
 import se.kth.iv1350.hackers.controller.Controller;
+import se.kth.iv1350.hackers.integration.AccountingSystem;
 import se.kth.iv1350.hackers.integration.DBController;
 import se.kth.iv1350.hackers.integration.IOController;
 import se.kth.iv1350.hackers.view.View;

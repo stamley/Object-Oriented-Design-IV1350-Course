@@ -9,9 +9,17 @@ import se.kth.iv1350.hackers.DTO.SaleDTO;
      * @param saleInformation SaleDTO containing information of sale.
      */
 public class AccountingSystem {
-    private ArrayList<SaleDTO> accountingSystem = new ArrayList<SaleDTO>();
+  private ArrayList<SaleDTO> accountingSystem = new ArrayList<SaleDTO>();
 
+    /**
+     * This is a package private constructor method
+     */
+    AccountingSystem() {
+
+    }
+  
     public void updateAccountingSystem (SaleDTO saleInformation){
         accountingSystem.add(saleInformation);
+
     }
 }

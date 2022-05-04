@@ -7,6 +7,12 @@ import se.kth.iv1350.hackers.model.Receipt;
  */
 public class Printer {
     /**
+     * This is a package private constructor method
+     */
+    Printer(){
+
+    }
+    /**
      * Prints the receipt of the current sale. This placeholder
      * implementation prints to <code>System.out</code>
      * instead of printer.
