@@ -15,11 +15,14 @@ public class SaleTest {
     private Sale currentSale;
     private SaleDTO saleDTO;
 
-    @Test
-    public void testAddItem() {
+    @BeforeEach
+    public void setUp(){
         currentSale = new Sale();
         saleDTO = new SaleDTO(currentSale);
+    }
 
+    @Test
+    public void testAddItem() {
         String itemName = "Apple";
         Amount costOfItem = new Amount(2);
         Amount VATOfItem = new Amount(20);
@@ -35,30 +38,15 @@ public class SaleTest {
     }
 
     @Test
-    public void testApplyDiscount() {
-
-    }
-
-    @Test
     public void testEndSale() {
-
-    }
-
-    @Test
-    public void testGetAmountPaid() {
-
-    }
-
-    @Test
-    public void testGetChangeAmount() {
-
+        boolean expResult = true;
+        boolean result = saleDTO.equals(currentSale.endSale()); 
+        
+        assertEquals(result, expResult, "The ended saleDTO is not of the same state as the initiated saleDTO.");
     }
 
     @Test
     public void testGetItems() {
-        currentSale = new Sale();
-        saleDTO = new SaleDTO(currentSale);
-
         boolean expResult = true;
         boolean result = currentSale.getItems().isEmpty();
 
@@ -66,32 +54,8 @@ public class SaleTest {
     }
 
     @Test
-    public void testGetLocalDateTime() {
-        currentSale = new Sale();
-        saleDTO = new SaleDTO(currentSale);
-
-        boolean expResult = true;
-        boolean result = true;
-    }
-
-    @Test
-    public void testGetTotalPrice() {
-
-    }
-
-    @Test
     public void testRegisterPayment() {
-
-    }
-
-    @Test
-    public void addItemToList(){
-        String itemName = "Apple";
-        Amount costOfItem = new Amount(2);
-        Amount VATOfItem = new Amount(20);
-
-        Item itemToAdd = new Item(new ItemDTO(itemName, costOfItem, VATOfItem), "1234",new Amount(2));
-        
-
+        Amount payment = new Amount(10);
+        saleDTO = currentSale.registerPayment(payment);
     }
 }
