@@ -43,7 +43,6 @@ public class View {
         changeAmount = controller.registerPayment(new Amount(200));
         saleInformation = controller.endSale();
         controller.logSale(saleInformation);
-        controller.printReceipt();
         
     }
 
