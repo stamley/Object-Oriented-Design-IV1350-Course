@@ -124,9 +124,4 @@ public final class SaleDTO{
 
         return true;
     }
-
-    /*
-        this.changeAmount = currentSale.getChangeAmount();
-    */ 
-    
 }
