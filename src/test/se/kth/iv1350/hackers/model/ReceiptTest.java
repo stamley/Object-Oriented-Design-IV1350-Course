@@ -37,12 +37,12 @@ public class ReceiptTest {
 
         Receipt testReceipt = new Receipt(saleDTO);
 
-        String expResult = itemIdentifier + itemName + Double.toString(itemQuantity.getAmount())
-                            + "Total price:" + Double.toString(total.getAmount())
-                            + "\n" + "Total price incl. VAT:" + Double.toString(totalIncludingVAT.getAmount())
-                            + "\n" + "Total price incl. VAT and discount:" + Double.toString(totalDiscountedIncludingVAT.getAmount())
-                            + "\n" + "Amount paid:" + Double.toString(amountPaid.getAmount())
-                            + "\n" + "Change" + Double.toString(changeAmount.getAmount());
+        String expResult = itemIdentifier + "\n" + itemName + "\n" + Double.toString(itemQuantity.getAmount())
+                            + "\n" + "Total price: " + Double.toString(total.getAmount())
+                            + "\n" + "Total price incl. VAT: " + Double.toString(totalIncludingVAT.getAmount())
+                            + "\n" + "Total price incl. VAT and discount: " + Double.toString(totalDiscountedIncludingVAT.getAmount())
+                            + "\n" + "Amount paid: " + Double.toString(amountPaid.getAmount())
+                            + "\n" + "Change: " + Double.toString(changeAmount.getAmount());
 
         String result = testReceipt.receiptToString();
         assertTrue(result.contains(expResult), "Wrong printout!");
