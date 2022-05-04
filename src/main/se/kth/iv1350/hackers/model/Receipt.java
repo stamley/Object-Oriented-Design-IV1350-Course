@@ -40,11 +40,10 @@ public class Receipt{
         for (HashMap.Entry<String, Item> entry : items.entrySet()){
             String key = entry.getKey();
             Item value = entry.getValue();
-            appendLine(sb,key);
-            sb.append(value.getItemDescription().getItemName());
-            sb.append(" " + Double.toString(value.getQuantity().getAmount()));
+            appendLine(sb, key);
+            appendLine(sb, value.getItemDescription().getItemName());
+            appendLine(sb, Double.toString(value.getQuantity().getAmount()));
         }
-        sb.append ("\n");
 
         sb.append("Total price: ");
         appendLine(sb, Double.toString(saleInformation.getTotalPrice().getTotal().getAmount()));
