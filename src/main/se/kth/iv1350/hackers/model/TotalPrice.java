@@ -22,7 +22,10 @@ public class TotalPrice {
 
      /**
      * Creates a new instance of price total and totalVAT 
-     * with an initial amount set to zero.
+     * with an initial amount set to specified values in parameters
+     * @param total Specified total (Amount)
+     * @param totalIncludingVAT Specified total including VAT (Amount)
+     * @param totalDiscountedIncludingVAT Specified discounted total including VAT (Amount)
      */
     TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
         this.total = total;
