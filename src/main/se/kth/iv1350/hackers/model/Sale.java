@@ -77,7 +77,7 @@ public class Sale {
     */
     private void addItemToList (Item item){
         items.put(item.getItemIdentifier(), item);
-        System.out.println("Sale: adding " + item.getItemDescription().getItemName() + "to the Sale");
+        System.out.println("Sale: adding " + item.getItemDescription().getItemName() + " to the Sale");
         updateTotal(item);
 
     }
