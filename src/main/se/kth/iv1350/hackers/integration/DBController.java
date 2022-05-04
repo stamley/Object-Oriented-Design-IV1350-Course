@@ -56,14 +56,20 @@ public class DBController {
         return discountDatabase.discountRequest(customerID);
     }
     /**
-     * this method updates the external databases using their corresponding methods.
-     * @param saleinformation
+     * This method updates the external databases using their corresponding methods.
+     * 
+     * @param saleinformation The sale information.
      */
     public void updateExternalSystems (SaleDTO saleinformation){
         accountingSystem.updateAccountingSystem(saleinformation);
         inventorySystem.updateInventorySystem(saleinformation);
     }
 
+    /**
+     * This method updates the inventory system using the inventorysystems corresponding method.
+     * 
+     * @param item The item to be added.
+     */
     public void addItemToInventorySystem(Item item){
         inventorySystem.addItemToInventorySystem(item);;
     }
