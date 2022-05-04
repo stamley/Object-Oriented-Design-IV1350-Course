@@ -27,7 +27,7 @@ public class TotalPrice {
      * @param totalIncludingVAT Specified total including VAT (Amount)
      * @param totalDiscountedIncludingVAT Specified discounted total including VAT (Amount)
      */
-    TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
+    public TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
         this.total = total;
         this.totalIncludingVAT = totalIncludingVAT;
         this.totalDiscountedIncludingVAT = totalDiscountedIncludingVAT;
