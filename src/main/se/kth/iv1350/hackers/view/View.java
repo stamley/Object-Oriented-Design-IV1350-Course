@@ -1,7 +1,10 @@
 package se.kth.iv1350.hackers.view;
+import se.kth.iv1350.hackers.DTO.ItemDTO;
 import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.controller.Controller;
+import se.kth.iv1350.hackers.model.Item;
 import se.kth.iv1350.hackers.util.*;
+
 
 /**
  * The application does not have an actual view, and this class
@@ -26,8 +29,13 @@ public class View {
     public void sampleExecution(){
         SaleDTO saleInformation;
         Amount changeAmount;
+        ItemDTO itemDTO;
+        itemDTO = new ItemDTO("Äpple", new Amount(4), new Amount (2));
+        
 
         controller.initiateSale();
+
+        Item item = new Item (itemDTO, "1234", new Amount(1.0));
         saleInformation = controller.addItem("1234", new Amount(3));
         saleInformation = controller.discountedSaleRequest(123);
         saleInformation = controller.endSale();

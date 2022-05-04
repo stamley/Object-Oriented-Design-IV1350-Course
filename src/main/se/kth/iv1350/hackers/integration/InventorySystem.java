@@ -21,6 +21,7 @@ public class InventorySystem {
      * else if will return <code>null</code>.
      */
     private boolean itemExists(String itemIdentifier){
+        System.out.println ("InventorySystem: Checks if identifier: " + itemIdentifier + " exists in the database");
         return itemList.containsKey(itemIdentifier);
     }
 
@@ -32,11 +33,15 @@ public class InventorySystem {
      * if it does not exist function returns <code>null</code>.
      */
     public boolean requestItemInfo(String itemIdentifier){
-        if (itemExists(itemIdentifier))
-        {
+        if (itemExists(itemIdentifier)){
+            System.out.println ("InventorySystem: Fetching item information");
             return true;
         }
-        return false;
+
+        else{ 
+            System.out.println("InventorySystem: Invalid item identifier");
+            return false;
+        }
     }
 
     /**
@@ -47,13 +52,15 @@ public class InventorySystem {
      * @return
      */
     public Item getItem(String itemIdentifier, Amount quantity){
-        return new Item(itemList.get(itemIdentifier), itemIdentifier, quantity); 
+        Item fetchedItem = new Item(itemList.get(itemIdentifier), itemIdentifier, quantity); 
+        System.out.println("InventorySystem: Fetching item from the database");
+        return fetchedItem;
     }
 
     /**
      * Updates the external inventory system 
      */
     public void updateInventorySystem (SaleDTO saleinformation){
-        
+        System.out.println("InventorySystem: Updating Inventory System with the sale information");
     }
 }

@@ -26,6 +26,7 @@ public class Controller {
      */
      public void initiateSale(){
         this.currentSale = new Sale();
+        System.out.println("Initiated sale");
      }
     
     /**
