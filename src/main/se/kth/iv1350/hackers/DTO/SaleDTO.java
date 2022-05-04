@@ -35,9 +35,20 @@ public final class SaleDTO{
         this.items = currentSale.getItems();
         this.amountPaid = currentSale.getAmountPaid();
         this.changeAmount = currentSale.getChangeAmount();
-
     }
-  
+
+        /**
+     * Create a new instance representing a particular sale.
+     * @param currentSale
+     */
+    public SaleDTO(TotalPrice totalPrice, LocalDateTime dateAndTime, HashMap <String, Item> items, Amount amountPaid, Amount changeAmount){
+        this.totalPrice = totalPrice;
+        this.localDateTime = dateAndTime;
+        this.items = items;
+        this.amountPaid = amountPaid;
+        this.changeAmount = changeAmount;
+    }
+
     /**
      * Get the value of totalRunningPrice.
      * 
@@ -83,5 +94,39 @@ public final class SaleDTO{
     public HashMap <String, Item> getItemList(){
         return items;
     }
+
+    @Override
+    public boolean equals(Object otherObj){
+        if(otherObj == null){
+            return false;
+        }
+        if(getClass() != otherObj.getClass()){
+            return false;
+        }
+        
+        final SaleDTO other = (SaleDTO) otherObj;
+
+        if(this.getAmountPaid().getAmount() != other.getAmountPaid().getAmount()){
+            return false;
+        }
+        if(this.getChangeAmount().getAmount() != other.getChangeAmount().getAmount()){
+            return false;
+        }
+        if(!this.getDateAndTime().equals(other.getDateAndTime())){
+            return false;
+        }
+        if(!this.getTotalPrice().equals(other.getTotalPrice())){
+            return false;
+        }
+        if(!this.getItemList().equals(other.getItemList())){
+            return false;
+        }   
+
+        return true;
+    }
+
+    /*
+        this.changeAmount = currentSale.getChangeAmount();
+    */ 
     
 }

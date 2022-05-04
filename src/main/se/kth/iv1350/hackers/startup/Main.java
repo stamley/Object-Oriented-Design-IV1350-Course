@@ -20,5 +20,6 @@ public class Main
         IOController ioController = new IOController();
         Controller controller = new Controller(ioController, dbHandler);
         View view = new View (controller);
+        view.sampleExecution();
     }
 }

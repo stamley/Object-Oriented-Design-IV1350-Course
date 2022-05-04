@@ -8,7 +8,7 @@ import se.kth.iv1350.hackers.util.Amount;
 public class TotalPrice {
     private Amount total;
     private Amount totalIncludingVAT;
-    private Amount totalDiscountedIncludingVat;
+    private Amount totalDiscountedIncludingVAT;
 
     /**
      * Creates a new instance of price total and totalVAT 
@@ -17,7 +17,17 @@ public class TotalPrice {
     TotalPrice(){
         total = new Amount(0);
         totalIncludingVAT = new Amount(0);
-        totalDiscountedIncludingVat = new Amount (0);
+        totalDiscountedIncludingVAT = new Amount (0);
+    }
+
+     /**
+     * Creates a new instance of price total and totalVAT 
+     * with an initial amount set to zero.
+     */
+    TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
+        total = new Amount(0);
+        totalIncludingVAT = new Amount(0);
+        totalDiscountedIncludingVAT = new Amount (0);
     }
 
     /**
@@ -78,7 +88,7 @@ public class TotalPrice {
      * @return The value of totalDiscountedIncludingVat
      */
     public Amount getTotalDiscountedIncludingVAT(){
-        return this.totalDiscountedIncludingVat;
+        return this.totalDiscountedIncludingVAT;
     }
 
     /**
@@ -94,7 +104,7 @@ public class TotalPrice {
      * @param amount
      */
     public void setTotalDiscountedIncludingVAT (Amount amount){
-        this.totalDiscountedIncludingVat = amount;
+        this.totalDiscountedIncludingVAT = amount;
     }
 
 }

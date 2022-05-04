@@ -37,10 +37,8 @@ public class Sale {
      */
     public SaleDTO addItem(Item item){
         if (itemListContainsItem(item)){
-            // updateQuantityAndTotal(item);
             this.updateQuantity(item);
             this.updateTotal(item);
-
         }
         else {
             this.addItemToList(item);
@@ -157,6 +155,13 @@ public class Sale {
     public Amount getChangeAmount(){
         return this.changeAmount;
     } 
+
+    /**
+     * Registers customer payment by asserting amount paid in currentSale, 
+     * and creates a new SaleDTO based on the sale.
+     * @param payment Customer payment.
+     * @return SaleDTO.
+     */
 
     public SaleDTO registerPayment (Amount payment){
         amountPaid = payment;

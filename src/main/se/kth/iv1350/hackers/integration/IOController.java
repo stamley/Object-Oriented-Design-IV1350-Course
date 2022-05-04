@@ -1,5 +1,9 @@
 package se.kth.iv1350.hackers.integration;
 
+import se.kth.iv1350.hackers.DTO.SaleDTO;
+import se.kth.iv1350.hackers.model.Receipt;
+import se.kth.iv1350.hackers.util.Amount;
+
 /**
  * A representation of the class that controls and manages
  * the IO systems.
