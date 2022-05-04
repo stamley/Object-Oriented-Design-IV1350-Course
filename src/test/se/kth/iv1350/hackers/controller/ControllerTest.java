@@ -13,18 +13,14 @@ import se.kth.iv1350.hackers.model.*;
 
 public class ControllerTest {
     private Controller controller;
-    private DBController dbController;
     private Sale currentSale;
     private SaleDTO saleDTO;
-    private InventorySystem inventorySystem;
 
     @BeforeEach
     public void setUp(){
-        dbController = new DBController();
-        controller = new Controller(new IOController(), dbController);
+        controller = new Controller(new IOController(), new DBController());
         currentSale = new Sale();
         saleDTO = new SaleDTO(currentSale);
-        inventorySystem = new InventorySystem();
     }
     
     @AfterEach
