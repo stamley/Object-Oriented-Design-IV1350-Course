@@ -5,7 +5,6 @@ import se.kth.iv1350.hackers.controller.Controller;
 import se.kth.iv1350.hackers.model.Item;
 import se.kth.iv1350.hackers.util.*;
 
-
 /**
  * The application does not have an actual view, and this class
  * is a placeholder.
@@ -33,15 +32,19 @@ public class View {
         Item äpple = new Item (äppleDTO, "128886678", new Amount(1.0));
         controller.addItemToInventorySystem(äpple);
 
+        ItemDTO tomatDTO = new ItemDTO("Tomat", new Amount(5), new Amount (3));
+        Item tomat = new Item (tomatDTO, "238886679", new Amount(1.0));
+        controller.addItemToInventorySystem(tomat);
+
         controller.initiateSale();
         
         saleInformation = controller.addItem("128886678", new Amount(3));
         saleInformation = controller.discountedSaleRequest(123);
+        changeAmount = controller.registerPayment(new Amount(200));
         saleInformation = controller.endSale();
         controller.logSale(saleInformation);
         controller.printReceipt();
         
-        changeAmount = controller.registerPayment(new Amount(200));
     }
 
    
