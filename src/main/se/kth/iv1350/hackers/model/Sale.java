@@ -101,6 +101,7 @@ public class Sale {
     public SaleDTO applyDiscount (DiscountDTO discount){
         totalPrice.setTotalDiscountedIncludingVAT(totalPrice.getTotalIncludingVAT().multiply(
             discount.getTotalDiscountPercentage()));
+            System.out.println("Sale: applying discount: " + discount.getTotalDiscountPercentage().toString() + "% * " + totalPrice.getTotalIncludingVAT().toString() + " = " + totalPrice.getTotalDiscountedIncludingVAT() + "SEK");
         return new SaleDTO (this);
    }
 
