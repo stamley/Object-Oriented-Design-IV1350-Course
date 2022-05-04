@@ -45,7 +45,7 @@ public class ControllerTest {
         String first = saleDTO.getItemList().get("1122").getItemDescription().getItemName();
         String second = itemToAdd.getItemIdentifier();
         boolean result = first.equals(second);
-        
+
         assertEquals(expectedResult, result, "");
     }
 

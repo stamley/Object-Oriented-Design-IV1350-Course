@@ -39,6 +39,7 @@ public class Sale {
         if (itemListContainsItem(item)){
 
             this.updateTotal(item);
+            this.updateQuantity(item);
         }
         else {
             this.addItemToList(item);
