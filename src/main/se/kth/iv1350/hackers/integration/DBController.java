@@ -71,6 +71,6 @@ public class DBController {
      * @param item The item to be added.
      */
     public void addItemToInventorySystem(Item item){
-        inventorySystem.addItemToInventorySystem(item);;
+        inventorySystem.addItemToInventorySystem(item);
     }
 }
