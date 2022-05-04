@@ -11,7 +11,7 @@ import se.kth.iv1350.hackers.util.Amount;
  * A representation of a inventory system.
  */
 public class InventorySystem {
-    private HashMap <String, ItemDTO> itemList = new HashMap<String, ItemDTO>();
+    private HashMap <String, Item> itemList = new HashMap<String, Item>();
 
     /**
      * Checks if the searched item identifier exists in the database.
@@ -52,7 +52,8 @@ public class InventorySystem {
      * @return
      */
     public Item getItem(String itemIdentifier, Amount quantity){
-        Item fetchedItem = new Item(itemList.get(itemIdentifier), itemIdentifier, quantity); 
+        Item fetchedItem = new Item(itemList.get(itemIdentifier).getItemDescription(), 
+            itemIdentifier, quantity); 
         System.out.println("InventorySystem: Fetching item from the database");
         return fetchedItem;
     }
@@ -62,5 +63,15 @@ public class InventorySystem {
      */
     public void updateInventorySystem (SaleDTO saleinformation){
         System.out.println("InventorySystem: Updating Inventory System with the sale information");
+    }
+
+    /**
+     * Adds item to the hashmap representing the external inventory system.
+     * 
+     * @param item Item to be added.
+     */
+    public void addItemToInventorySystem(Item item){
+        this.itemList.put("128886678", item);
+        
     }
 }

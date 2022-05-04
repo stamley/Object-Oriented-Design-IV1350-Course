@@ -64,4 +64,7 @@ public class DBController {
         inventorySystem.updateInventorySystem(saleinformation);
     }
 
+    public void addItemToInventorySystem(Item item){
+        inventorySystem.addItemToInventorySystem(item);;
+    }
 }
