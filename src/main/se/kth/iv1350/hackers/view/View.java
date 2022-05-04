@@ -28,9 +28,6 @@ public class View {
     public void sampleExecution(){
         SaleDTO saleInformation;
         Amount changeAmount;
-        ItemDTO äppleDTO = new ItemDTO("Äpple", new Amount(4), new Amount (2));
-        Item äpple = new Item (äppleDTO, "128886678", new Amount(1.0));
-        controller.addItemToInventorySystem(äpple);
 
         ItemDTO tomatDTO = new ItemDTO("Tomat", new Amount(5), new Amount (3));
         Item tomat = new Item (tomatDTO, "238886679", new Amount(1.0));
