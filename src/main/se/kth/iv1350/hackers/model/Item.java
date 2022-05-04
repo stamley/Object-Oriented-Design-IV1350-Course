@@ -6,7 +6,6 @@ import se.kth.iv1350.hackers.util.*;
  * A representation of an item.
  */
 public class Item{
-    // private ItemDTO itemDescription;
     private ItemDTO itemDescription;
     private String itemIdentifier;
     private Amount itemQuantity;
