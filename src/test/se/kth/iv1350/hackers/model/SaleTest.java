@@ -65,7 +65,8 @@ public class SaleTest {
     @Test
     public void testRegisterPayment() {
         Amount payment = new Amount(10);
-        saleDTO = currentSale.registerPayment(payment);
+        Amount change = currentSale.registerPayment(payment); 
+        saleDTO = currentSale.endSale();
 
         boolean expResult = true;
         boolean result = 10 == saleDTO.getAmountPaid().getAmount();

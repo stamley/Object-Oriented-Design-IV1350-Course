@@ -29,14 +29,13 @@ public class View {
     public void sampleExecution(){
         SaleDTO saleInformation;
         Amount changeAmount;
-        ItemDTO itemDTO;
-        itemDTO = new ItemDTO("Äpple", new Amount(4), new Amount (2));
-        
+        ItemDTO äppleDTO = new ItemDTO("Äpple", new Amount(4), new Amount (2));
+        Item äpple = new Item (äppleDTO, "128886678", new Amount(1.0));
+        controller.addItemToInventorySystem(äpple);
 
         controller.initiateSale();
-
-        Item item = new Item (itemDTO, "1234", new Amount(1.0));
-        saleInformation = controller.addItem("1234", new Amount(3));
+        
+        saleInformation = controller.addItem("128886678", new Amount(3));
         saleInformation = controller.discountedSaleRequest(123);
         saleInformation = controller.endSale();
         controller.logSale(saleInformation);

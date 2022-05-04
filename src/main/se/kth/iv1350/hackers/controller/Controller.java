@@ -104,4 +104,13 @@ public class Controller {
     public void printReceipt(){
         ioController.printReceipt(currentReceipt);
     }
+
+    /**
+     * Adds item to external inventory system
+     * 
+     * @param item Item to be added.
+     */
+    public void addItemToInventorySystem(Item item){
+        dbController.addItemToInventorySystem(item);
+    }
 }
