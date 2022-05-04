@@ -19,6 +19,7 @@ public class DiscountDatabase {
      * @return An object of type discount dto.
      */
     public DiscountDTO discountRequest(int customerID){
+        System.out.println ("DiscountDatabase: Fetching discount type and amount from database");
         return new DiscountDTO(this.fetchDiscountAmountFromDatabase(customerID), 
                                this.fetchTypeOfDiscountFromDatabase(customerID));
     }
