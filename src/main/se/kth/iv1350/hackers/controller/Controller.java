@@ -26,7 +26,7 @@ public class Controller {
      */
      public void initiateSale(){
         this.currentSale = new Sale();
-        System.out.println("Cashier initiated Sale");
+        System.out.println("Initiated sale");
      }
     
     /**
