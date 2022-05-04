@@ -24,7 +24,7 @@ public class TotalPrice {
      * Creates a new instance of price total and totalVAT 
      * with an initial amount set to zero.
      */
-    TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
+    public TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
         total = new Amount(0);
         totalIncludingVAT = new Amount(0);
         totalDiscountedIncludingVAT = new Amount (0);

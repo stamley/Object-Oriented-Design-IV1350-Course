@@ -44,15 +44,12 @@ public class Receipt{
             sb.append(value.toString());
         }
 
-        /*
         sb.append("Total price:");
         appendLine(sb, String.valueOf((Double)saleInformation.getTotalPrice().getTotal().getAmount()));
         sb.append("Total price incl. VAT:");
         appendLine(sb, Double.toString(saleInformation.getTotalPrice().getTotalIncludingVAT().getAmount()));
         sb.append("Total price incl. VAT and discount:");
         appendLine(sb, Double.toString(saleInformation.getTotalPrice().getTotalDiscountedIncludingVAT().getAmount()));
-        */
-        
         sb.append("Amound paid:");
         appendLine(sb, saleInformation.getAmountPaid().toString());
         sb.append("Change");
