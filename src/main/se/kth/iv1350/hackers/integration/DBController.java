@@ -41,7 +41,6 @@ public class DBController {
       */
     public Item getItem(String identifier,Amount quantity){
         Item fetchItemFromDatabase = inventorySystem.getItem(identifier, quantity);
-        System.out.println("Database-Controller Requests item from the InventorySystem");
         return fetchItemFromDatabase;
     }
 

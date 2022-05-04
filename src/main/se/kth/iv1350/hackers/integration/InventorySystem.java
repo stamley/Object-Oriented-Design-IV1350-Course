@@ -40,7 +40,7 @@ public class InventorySystem {
      */
     public boolean requestItemInfo(String itemIdentifier){
         if (itemExists(itemIdentifier)){
-            System.out.println ("InventorySystem: Fetching item information");
+            System.out.println ("InventorySystem: Fetching item information with valid identifer");
             return true;
         }
 
@@ -60,7 +60,7 @@ public class InventorySystem {
     public Item getItem(String itemIdentifier, Amount quantity){
         Item fetchedItem = new Item(itemList.get(itemIdentifier).getItemDescription(), 
             itemIdentifier, quantity); 
-        System.out.println("InventorySystem: Fetching item from the database");
+        System.out.println("InventorySystem: Fetching the actual item from the database");
         return fetchedItem;
     }
 
