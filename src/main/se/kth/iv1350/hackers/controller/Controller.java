@@ -26,6 +26,7 @@ public class Controller {
      */
      public void initiateSale(){
         this.currentSale = new Sale();
+        System.out.println("Initiated sale");
      }
     
     /**
@@ -64,23 +65,43 @@ public class Controller {
     }
 
     /**
-     * Finalizes the sale.
+     * Ends the sale, creates and prints receipt and updates external systems.
      * 
      * @return The final version of SaleDTO containing all sale information.
      */
     public SaleDTO endSale(){
-        return currentSale.endSale();
+        //return currentSale.endSale();
+        SaleDTO endedSaleDTO = currentSale.endSale();
+        currentReceipt = new Receipt(endedSaleDTO);
+        dbController.updateExternalSystems(endedSaleDTO);
+        printReceipt();
+        return endedSaleDTO;
     }
 
     /**
-     * Registers the customer payment which will create a receipt return the change.
+     * Registers the customer payment which will update the current sale.
      * 
      * @param payment Customer payment.
      * @return Change of sale as an amount.
      */
     public Amount registerPayment(Amount payment){
-        SaleDTO endedSaleDTO = currentSale.registerPayment(payment);
-        currentReceipt = new Receipt(endedSaleDTO);
-        return endedSaleDTO.getChangeAmount();
+        return currentSale.registerPayment(payment);
+    }
+
+    /**
+     * Logs current sale in sale log
+     * 
+     * @param saleInformation SaleDTO of current sale.
+     */
+    public void logSale(SaleDTO saleInformation){
+        ioController.logSale(saleInformation);
+    }
+
+    /**
+     * Prints the current receipt.
+     */
+
+    public void printReceipt(){
+        ioController.printReceipt(currentReceipt);
     }
 }
