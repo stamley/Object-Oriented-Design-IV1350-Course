@@ -1,22 +1,25 @@
 package se.kth.iv1350.hackers.util;
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class AmountTest {
     private Amount amountWithTwo;
+    private Amount amountWithZero;
     
     @BeforeEach
     public void setUp(){
-        Amount amountWithTwo = new Amount(2);
+       amountWithTwo = new Amount(2);
+       amountWithZero = new Amount(0);
     }
 
     @AfterEach
     void tearDown(){
         amountWithTwo = null;
+        amountWithZero = null;
     }
 
     @Test
@@ -123,4 +126,14 @@ public class AmountTest {
         Amount result = operand1.multiply(operand2);
         assertEquals(expectedResult, result, "Wrong multiplication result");
     }
+
+    @Test
+    public void testNotEqualsJavaLangObject(){
+        Object other = new Object();
+        boolean expRes = false;
+        boolean result = amountWithZero.equals(other);
+        assertEquals(expRes, result,    "Amount instance equal java.lang.Object.");
+    }
+
+
 }
