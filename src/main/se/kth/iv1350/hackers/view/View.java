@@ -39,6 +39,8 @@ public class View {
         saleInformation = controller.addItem("1234", new Amount(3));
         saleInformation = controller.discountedSaleRequest(123);
         saleInformation = controller.endSale();
+        controller.logSale(saleInformation);
+        controller.printReceipt();
         
         changeAmount = controller.registerPayment(new Amount(200));
     }

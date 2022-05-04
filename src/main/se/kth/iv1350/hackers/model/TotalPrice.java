@@ -15,19 +15,22 @@ public class TotalPrice {
      * with an initial amount set to zero.
      */
     TotalPrice(){
-        total = new Amount(0);
-        totalIncludingVAT = new Amount(0);
-        totalDiscountedIncludingVAT = new Amount (0);
+        this.total = new Amount(0);
+        this.totalIncludingVAT = new Amount(0);
+        this.totalDiscountedIncludingVAT = new Amount (0);
     }
 
      /**
      * Creates a new instance of price total and totalVAT 
-     * with an initial amount set to zero.
+     * with an initial amount set to specified values in parameters
+     * @param total Specified total (Amount)
+     * @param totalIncludingVAT Specified total including VAT (Amount)
+     * @param totalDiscountedIncludingVAT Specified discounted total including VAT (Amount)
      */
     TotalPrice(Amount total, Amount totalIncludingVAT, Amount totalDiscountedIncludingVAT){
-        total = new Amount(0);
-        totalIncludingVAT = new Amount(0);
-        totalDiscountedIncludingVAT = new Amount (0);
+        this.total = total;
+        this.totalIncludingVAT = totalIncludingVAT;
+        this.totalDiscountedIncludingVAT = totalDiscountedIncludingVAT;
     }
 
     /**

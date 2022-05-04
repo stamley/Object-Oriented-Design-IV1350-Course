@@ -84,4 +84,21 @@ public class Controller {
         currentReceipt = new Receipt(endedSaleDTO);
         return endedSaleDTO.getChangeAmount();
     }
+
+    /**
+     * Logs current sale in sale log
+     * 
+     * @param saleInformation SaleDTO of current sale.
+     */
+    public void logSale(SaleDTO saleInformation){
+        ioController.logSale(saleInformation);
+    }
+
+    /**
+     * Prints the current receipt.
+     */
+
+    public void printReceipt(){
+        ioController.printReceipt(currentReceipt);
+    }
 }
