@@ -48,5 +48,6 @@ public class ReceiptTest {
         assertTrue(result.contains(expResult), "Wrong printout!");
         assertTrue(result.contains(Integer.toString(localDateTime.getDayOfMonth())),
                             "Wrong rental day.");
+        }
 
     }

@@ -37,13 +37,11 @@ public class Sale {
      */
     public SaleDTO addItem(Item item){
         if (itemListContainsItem(item)){
-            this.updateQuantity(item);
 
             this.updateTotal(item);
         }
         else {
             this.addItemToList(item);
-            this.updateTotal(item);
         }
         return new SaleDTO(this);
     }
@@ -55,7 +53,7 @@ public class Sale {
      * returns <code>false</code> if the item 
      */
     private boolean itemListContainsItem(Item item){
-        System.out.println ("Checks if " + item + " already exists on the item list");
+        System.out.println ("Checks if " + item.getItemDescription().getItemName() + " already exists on the item list");
         return items.containsKey(item.getItemIdentifier());
     }
 
@@ -67,7 +65,7 @@ public class Sale {
     private void updateQuantity (Item item){
         Item existingItem = items.get(item.getItemIdentifier());
         existingItem.increaseQuantity(item.getQuantity());
-        System.out.println("Increasing the quantity of" + item + "\n");
+        System.out.println("Increasing the quantity of" + item.getItemDescription().getItemName() + "\n");
         addItemToList(existingItem);
         updateTotal(item);
     }
@@ -79,7 +77,7 @@ public class Sale {
     */
     private void addItemToList (Item item){
         items.put(item.getItemIdentifier(), item);
-        System.out.println("adding " + item + " to the Sale\n");
+        System.out.println("adding " + item.getItemDescription().getItemName() + " to the Sale\n");
         updateTotal(item);
 
     }
@@ -90,7 +88,7 @@ public class Sale {
      */
     private void updateTotal (Item item){
         totalPrice.UpdatePrice(item);
-        System.out.println("Updating total price with the item: " + item + "\n");
+        System.out.println("Updating the total price: " + totalPrice.getTotal().getAmount() + " with the item: " + item.getItemDescription().getItemName() + "\n");
     }
 
      /**

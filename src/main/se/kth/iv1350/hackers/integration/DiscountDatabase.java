@@ -23,7 +23,7 @@ public class DiscountDatabase {
      */
 
     public Amount fetchDiscountAmountFromDatabase(int customerID){
-        return new Amount(0.1);
+        return new Amount(0.9);
     }
 
     /**
