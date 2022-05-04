@@ -85,7 +85,7 @@ public class Controller {
     }
 
     /**
-     * Log sale in sale log
+     * Logs current sale in sale log
      * 
      * @param saleInformation SaleDTO of current sale.
      */
@@ -95,11 +95,9 @@ public class Controller {
 
     /**
      * Prints the current receipt.
-     * 
-     * @param currentReceipt Receipt of the current sale.
      */
 
-    public void printReceipt(Receipt currentReceipt){
+    public void printReceipt(){
         ioController.printReceipt(currentReceipt);
     }
 }
