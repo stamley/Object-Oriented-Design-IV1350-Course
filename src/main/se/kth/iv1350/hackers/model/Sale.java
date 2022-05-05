@@ -39,6 +39,7 @@ public class Sale {
         if (itemListContainsItem(item)){
 
             this.updateTotal(item);
+            this.updateQuantity(item);
         }
         else {
             this.addItemToList(item);
@@ -77,7 +78,7 @@ public class Sale {
     */
     private void addItemToList (Item item){
         items.put(item.getItemIdentifier(), item);
-        System.out.println("Sale: adding " + item.getItemDescription().getItemName() + "to the Sale");
+        System.out.println("Sale: adding " + item.getItemDescription().getItemName() + " to the Sale");
         updateTotal(item);
 
     }
@@ -101,6 +102,7 @@ public class Sale {
     public SaleDTO applyDiscount (DiscountDTO discount){
         totalPrice.setTotalDiscountedIncludingVAT(totalPrice.getTotalIncludingVAT().multiply(
             discount.getTotalDiscountPercentage()));
+            System.out.println("Sale: applying discount: " + discount.getTotalDiscountPercentage().toString() + "% * " + totalPrice.getTotalIncludingVAT().toString() + " = " + totalPrice.getTotalDiscountedIncludingVAT() + "SEK");
         return new SaleDTO (this);
    }
 
