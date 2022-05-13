@@ -35,7 +35,7 @@ public class View {
 
         controller.initiateSale();
         
-        saleInformation = controller.addItem("128886678", new Amount(3));
+        saleInformation = controller.addItem("12888678", new Amount(3));
         saleInformation = controller.discountedSaleRequest(123);
         changeAmount = controller.registerPayment(new Amount(200));
         saleInformation = controller.endSale();
