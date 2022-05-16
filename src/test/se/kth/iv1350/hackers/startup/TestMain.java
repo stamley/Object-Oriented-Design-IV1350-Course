@@ -7,7 +7,7 @@ public class TestMain {
     public void testMain()
     {
         String [] args = null;
-        Main.main(args);
+        //Main.main(args);
     }
 
 }
