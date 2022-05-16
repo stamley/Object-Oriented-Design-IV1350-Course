@@ -38,15 +38,13 @@ public class InventorySystem {
      * @return If the item exists the method will return the coresponding item,
      * if it does not exist function returns <code>null</code>.
      */
-    public boolean requestItemInfo(String itemIdentifier){
+    public boolean requestItemInfo(String itemIdentifier) throws InvalidIdentifierException {
         if (itemExists(itemIdentifier)){
             System.out.println ("InventorySystem: Fetching item information with valid identifer");
             return true;
         }
-
-        else{ 
-            System.out.println("InventorySystem: Invalid item identifier");
-            return false;
+        else{
+            throw new InvalidIdentifierException("InventorySystem: Invalid item identifier");
         }
     }
 

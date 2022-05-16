@@ -29,7 +29,15 @@ public class DBController {
     * @param identifier The item that is being scanned.
     */
     public boolean requestItemInfo(String identifier){
-        return inventorySystem.requestItemInfo(identifier);
+        boolean succesfulRequest = false; 
+        try{
+            succesfulRequest = inventorySystem.requestItemInfo(identifier);
+        }
+        catch(InvalidIdentifierException e){
+            System.out.println(e);
+        }
+
+        return succesfulRequest;
      }
 
      /**
