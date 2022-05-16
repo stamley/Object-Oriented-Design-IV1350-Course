@@ -3,6 +3,7 @@ import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.integration.*;
 import se.kth.iv1350.hackers.model.*;
 import se.kth.iv1350.hackers.util.Amount;
+import se.kth.iv1350.hackers.util.LogHandler;
 
 public class Controller {
     private IOController ioController;
@@ -41,7 +42,6 @@ public class Controller {
           itemInfoFound =  dbController.requestItemInfo(identifier);
         }
         catch(InvalidIdentifierException e) {
-            // Program LOG
            throw new OperationFailedException ("User Interface - Operation Failed, invalid identifier: " + e.getItemIdentifier(), e);
         }
        

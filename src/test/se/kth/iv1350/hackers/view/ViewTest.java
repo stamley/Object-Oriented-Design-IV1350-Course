@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import se.kth.iv1350.hackers.controller.Controller;
+import se.kth.iv1350.hackers.controller.OperationFailedException;
 import se.kth.iv1350.hackers.integration.DBController;
 import se.kth.iv1350.hackers.integration.IOController;
 
@@ -21,6 +22,11 @@ public class ViewTest {
 
         View view = new View(controller);
         
-        view.sampleExecution();
+        try{
+            view.sampleExecution();
+        }
+        catch(OperationFailedException e){
+            
+        }
     }
 }
