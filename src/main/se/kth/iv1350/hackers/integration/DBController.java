@@ -3,6 +3,7 @@ import se.kth.iv1350.hackers.DTO.DiscountDTO;
 import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.model.Item;
 import se.kth.iv1350.hackers.util.Amount;
+import se.kth.iv1350.hackers.util.LogHandler;
 
 
 /**
@@ -14,6 +15,7 @@ public class DBController {
     private InventorySystem inventorySystem;
     private DiscountDatabase discountDatabase;
 
+    private LogHandler logHandler = new LogHandler();
     /**
      * Creates a new instance of DBHandler.
      */
@@ -31,8 +33,15 @@ public class DBController {
     public boolean requestItemInfo(String identifier)
     throws InvalidIdentifierException
     {
-        return inventorySystem.requestItemInfo(identifier);
-     }
+        boolean itemInfoFound = false;
+        try{
+            itemInfoFound = inventorySystem.requestItemInfo(identifier); 
+        }
+        catch(InventorySystemException e){
+            logHandler.logException(e);
+        }
+        return itemInfoFound; 
+    }
 
      /**
       * Fetches <code>Item</code> with corresponding identifier and quantity. 

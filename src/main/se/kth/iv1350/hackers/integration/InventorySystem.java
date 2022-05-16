@@ -12,6 +12,8 @@ import se.kth.iv1350.hackers.util.Amount;
  */
 public class InventorySystem {
     private HashMap <String, Item> itemList = new HashMap<String, Item>();
+
+
     /**
      * package private constructor-method 
      */
