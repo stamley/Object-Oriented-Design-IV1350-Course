@@ -42,10 +42,13 @@ public class View {
 
         controller.initiateSale();
         try {
-            saleInformation = controller.addItem("128886678", new Amount(5));
+            saleInformation = controller.addItem("12888667", new Amount(5));
         }
         catch (OperationFailedException e){
-            System.out.println (e);
+            System.out.println (e.getMessage());
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
         saleInformation = controller.addItem("1212", new Amount(5));
         saleInformation = controller.discountedSaleRequest(123);
