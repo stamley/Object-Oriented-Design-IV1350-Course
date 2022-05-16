@@ -61,6 +61,7 @@ public class Controller {
      * @return An object of type sale DTO.
      */
     public SaleDTO discountedSaleRequest(int customerID){
+        System.out.println("Controller: Requesting discount from database");
         return currentSale.applyDiscount(dbController.discountRequest(customerID));
     }
 
@@ -74,6 +75,7 @@ public class Controller {
         SaleDTO endedSaleDTO = currentSale.endSale();
         currentReceipt = new Receipt(endedSaleDTO);
         dbController.updateExternalSystems(endedSaleDTO);
+        System.out.println("Controller: Ends sale\nPrinting receipt...\n");
         printReceipt();
         return endedSaleDTO;
     }
