@@ -37,14 +37,18 @@ public class InventorySystem {
      * @param identifier The item that is being scanned.
      * @return If the item exists the method will return the coresponding item,
      * if it does not exist function returns <code>null</code>.
+     * @throws InvalidIdentifierException 
      */
     public boolean requestItemInfo(String itemIdentifier) throws InvalidIdentifierException {
+        if (itemIdentifier.equals("1212")){
+            throw new InventorySystemException("The database is not available");
+        }
         if (itemExists(itemIdentifier)){
             System.out.println ("InventorySystem: Fetching item information with valid identifer");
             return true;
         }
         else{
-            throw new InvalidIdentifierException("InventorySystem: Invalid item identifier");
+            throw new InvalidIdentifierException(itemIdentifier);
         }
     }
 
