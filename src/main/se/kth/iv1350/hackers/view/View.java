@@ -29,15 +29,15 @@ public class View {
         SaleDTO saleInformation;
         Amount changeAmount;
 
-        ItemDTO tomatDTO = new ItemDTO("Tomat", new Amount(5), new Amount (3));
+        ItemDTO tomatDTO = new ItemDTO("Tomat", new Amount(3), new Amount (1.2));
         Item tomat = new Item (tomatDTO, "238886679", new Amount(1.0));
         controller.addItemToInventorySystem(tomat);
 
         controller.initiateSale();
         
-        saleInformation = controller.addItem("128886678", new Amount(3));
+        saleInformation = controller.addItem("128886678", new Amount(5));
         saleInformation = controller.discountedSaleRequest(123);
-        changeAmount = controller.registerPayment(new Amount(200));
+        changeAmount = controller.registerPayment(new Amount(100));
         saleInformation = controller.endSale();
         controller.logSale(saleInformation);
         
