@@ -33,9 +33,19 @@ public class Controller {
     * Fetches information for a particular item.
     *
     * @param identifier The item that is being scanned.
+     * @throws OperationFailedException throws new, more fitting exceptions to the view 
     */
-    public boolean requestItemInfo(String identifier){
-       return dbController.requestItemInfo(identifier);
+    public boolean requestItemInfo(String identifier) throws OperationFailedException{
+        boolean itemInfoFound = false;
+        try {
+          itemInfoFound =  dbController.requestItemInfo(identifier);
+        }
+        catch(InvalidIdentifierException e) {
+            // Program LOG
+           throw new OperationFailedException ("User Interface - Operation Failed, invalid identifier: " + e.getItemIdentifier(), e);
+        }
+        return itemInfoFound;
+      
     }
 
     /**
@@ -44,8 +54,9 @@ public class Controller {
      * 
      * @param identifier The identifier scanned by the cashier.
      * @param quantity The quantity specified by the cashier.
+     * @throws OperationFailedException
      */
-    public SaleDTO addItem(String identifier, Amount quantity){
+    public SaleDTO addItem(String identifier, Amount quantity) throws OperationFailedException{
         if(requestItemInfo(identifier)){
             Item item = dbController.getItem(identifier, quantity);
             return currentSale.addItem(item);
