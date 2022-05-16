@@ -34,7 +34,7 @@ public class DBController {
             succesfulRequest = inventorySystem.requestItemInfo(identifier);
         }
         catch(InvalidIdentifierException e){
-            System.out.println(e.getMessage());
+            System.out.println(e);
         }
 
         return succesfulRequest;
