@@ -39,7 +39,6 @@ public class DBController {
         }
         catch(InventorySystemException e){
             logHandler.logException(e);
-            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n\n\n");
         }
         return itemInfoFound; 
     }
