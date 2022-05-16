@@ -44,6 +44,7 @@ public class Controller {
         catch(InvalidIdentifierException e) {
            throw new OperationFailedException ("User Interface - Operation Failed, invalid identifier: " + e.getItemIdentifier(), e);
         }
+       
         return itemInfoFound;
       
     }
