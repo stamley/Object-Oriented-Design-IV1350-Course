@@ -4,6 +4,7 @@ import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.controller.Controller;
 import se.kth.iv1350.hackers.controller.OperationFailedException;
 import se.kth.iv1350.hackers.model.Item;
+import se.kth.iv1350.hackers.model.PaymentObserver;
 import se.kth.iv1350.hackers.util.*;
 
 /**
@@ -21,6 +22,10 @@ public class View {
      */
     public View(Controller controller){
         this.controller = controller;
+        this.controller.initiateSale();
+        this.controller.addPaymentObserversToList(new TotalRevenueView());
+        this.controller.addPaymentObserversToList(new TotalRevenueOutput());
+        this.controller.addPaymentObservers();
     }
     /**
      * Fake execution from the view.
@@ -39,8 +44,6 @@ public class View {
         Item banan = new Item (bananDTO, "1212", new Amount(1.0));
         controller.addItemToInventorySystem(banan);
 
-
-        controller.initiateSale();
         try {
             saleInformation = controller.addItem("128886678", new Amount(5));
         }
@@ -55,6 +58,16 @@ public class View {
         changeAmount = controller.registerPayment(new Amount(100));
         saleInformation = controller.endSale();
         controller.logSale(saleInformation);
+        
+        /*
+        saleInformation = controller.addItem("1212", new Amount(5));
+        saleInformation = controller.discountedSaleRequest(123);
+        changeAmount = controller.registerPayment(new Amount(100));
+        saleInformation = controller.endSale();
+        controller.logSale(saleInformation);
+        */
+
+        
 
         }
         

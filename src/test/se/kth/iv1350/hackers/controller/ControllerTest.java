@@ -64,7 +64,6 @@ public class ControllerTest{
 
     @Test
     public void testRequestItemInfo(){
-
         OperationFailedException thrown = assertThrows("Expected requested item info to throw, but it didn't.",
         OperationFailedException.class,() -> controller.requestItemInfo("1337"));
 

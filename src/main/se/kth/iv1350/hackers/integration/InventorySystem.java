@@ -59,7 +59,7 @@ public class InventorySystem {
      * 
      * @param itemIdentifier The value bound to a particular Item.
      * @param quantity The quantity of a particular Item.
-     * @return
+     * @return The item fetched from the database.
      */
     public Item getItem(String itemIdentifier, Amount quantity){
         Item fetchedItem = new Item(itemList.get(itemIdentifier).getItemDescription(), 
