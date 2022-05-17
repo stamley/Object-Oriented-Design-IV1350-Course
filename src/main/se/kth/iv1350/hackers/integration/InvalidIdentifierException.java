@@ -11,7 +11,7 @@ public class InvalidIdentifierException extends Exception{
      */
     String itemIdentifier;
     public InvalidIdentifierException(String itemIdentifier){
-        super("this item identifier : " + itemIdentifier + " Does not exist");
+        super("This item identifier: " + itemIdentifier + " does not exist");
         this.itemIdentifier = itemIdentifier;
     }
     

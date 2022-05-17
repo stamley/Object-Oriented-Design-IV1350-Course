@@ -1,15 +1,18 @@
 package se.kth.iv1350.hackers.controller;
+
 import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.integration.*;
 import se.kth.iv1350.hackers.model.*;
 import se.kth.iv1350.hackers.util.Amount;
 import se.kth.iv1350.hackers.util.LogHandler;
+import java.util.ArrayList;
 
 public class Controller {
     private IOController ioController;
     private DBController dbController; 
     private Sale currentSale;
     private Receipt currentReceipt;
+    private ArrayList<PaymentObserver> paymentObserversList = new ArrayList<PaymentObserver>();
 
     /**
      * Creates a new instance of controller.
@@ -129,5 +132,23 @@ public class Controller {
      */
     public void addItemToInventorySystem(Item item){
         dbController.addItemToInventorySystem(item);
+    }
+
+    /**
+     * Adds payment observer to the current sale;
+     * @param paymentObserver
+     */
+
+    public void addPaymentObservers(){
+        currentSale.addPaymentObserver(paymentObserversList);
+    }
+
+    /**
+     * Adds payment observer to the payment observer list of the controller.
+     * @param paymentObserver
+     */
+
+    public void addPaymentObserversToList(PaymentObserver paymentObserver){
+        paymentObserversList.add(paymentObserver);
     }
 }

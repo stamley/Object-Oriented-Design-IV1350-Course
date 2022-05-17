@@ -1,5 +1,6 @@
 package se.kth.iv1350.hackers.model;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import se.kth.iv1350.hackers.DTO.*;
@@ -8,12 +9,13 @@ import se.kth.iv1350.hackers.util.Amount;
 /**
  * A representation of a sale.
  */
-public class Sale {
+public class Sale{
     private TotalPrice totalPrice;
     private HashMap <String, Item> items = new HashMap<String, Item>();
     private LocalDateTime dateAndTime;
     private Amount amountPaid;
     private Amount changeAmount;
+    private ArrayList<PaymentObserver> paymentObserversList = new ArrayList<PaymentObserver>();
 
     /**
      * Creates a new instance of sale with initial amount set to zero.
@@ -113,7 +115,9 @@ public class Sale {
     * @return The final version of SaleDTO containing all the sale information.
     */
    public SaleDTO endSale(){
-       return new SaleDTO(this);
+       SaleDTO endedSale = new SaleDTO(this);
+       notifyObservers(endedSale.getTotalPrice().getTotalDiscountedIncludingVAT());
+       return endedSale;
    }
 
     /**
@@ -172,5 +176,38 @@ public class Sale {
         this.amountPaid = payment;
         this.changeAmount = totalPrice.getTotalDiscountedIncludingVAT().decrease(amountPaid);
         return this.changeAmount;
+    }
+
+    /**
+     * Notifies all obervers of the total revenue.
+     * 
+     * @param totalRevenue total revenue of the sale of type Amount.
+     */
+
+    void notifyObservers(Amount totalRevenue){
+        for(PaymentObserver obs : paymentObserversList ){
+            obs.updateTotal(totalRevenue.getAmount());
+        }
+    }
+
+    /**
+     * Adds a payment observer to the list of payment observers.
+     * 
+     * @param paymentObserver payment observer.
+     */
+
+    public void addPaymentObserver(PaymentObserver paymentObserver){
+        paymentObserversList.add(paymentObserver);
+    }
+
+    /**
+     * 
+     * @param paymentObserversList
+     */
+
+    public void addPaymentObserver(ArrayList<PaymentObserver> paymentObserversList){
+        for(PaymentObserver paymentObserver : paymentObserversList){
+            this.paymentObserversList.add(paymentObserver);
+        }
     }
 }
