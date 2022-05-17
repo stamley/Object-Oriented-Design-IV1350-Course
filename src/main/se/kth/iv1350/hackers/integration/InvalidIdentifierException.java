@@ -1,9 +1,14 @@
 package se.kth.iv1350.hackers.integration;
 /**
- * This class handles invalid identifiers. 
+ * Thrown when an item itentifier is invalid. 
  */
 
 public class InvalidIdentifierException extends Exception{
+
+    /**
+     * Creates a new instance with the specified itemidentifier that caused the exception. 
+     * @param itemIdentifier The specified itendifier.
+     */
     String itemIdentifier;
     public InvalidIdentifierException(String itemIdentifier){
         super("this item identifier : " + itemIdentifier + " Does not exist");
