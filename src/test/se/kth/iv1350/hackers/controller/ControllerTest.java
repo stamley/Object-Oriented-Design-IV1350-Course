@@ -1,20 +1,102 @@
 package se.kth.iv1350.hackers.controller;
-
 import se.kth.iv1350.hackers.integration.*;
+import se.kth.iv1350.hackers.model.Item;
+import se.kth.iv1350.hackers.model.Sale;
+import se.kth.iv1350.hackers.util.Amount;
+import se.kth.iv1350.hackers.DTO.ItemDTO;
+import se.kth.iv1350.hackers.DTO.SaleDTO;
 
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 
 
 public class ControllerTest{
     private Controller controller;
 
     @Before
-    public void setup()
-    {
-        controller = new Controller(IOController ioController, DBController dbController);
+    public void setup(){
+        controller = new Controller(new IOController(), new DBController());
     }
+
+    @After
+    public void tearDown(){
+        controller = null;
+    }
+
+    @Test
+    public void addItem(){
+
+        controller.initiateSale();
+        Sale currentSale = new Sale();
+
+        String itemName = "Apple";
+        Amount costOfItem = new Amount(2);
+        Amount VATOfItem = new Amount(20);
+
+        Item itemToAdd = new Item(new ItemDTO(itemName, costOfItem, VATOfItem),
+        "128886678",new Amount(2));
+         
+        controller.addItemToInventorySystem(itemToAdd);
+
+        String identifier = "128886678";
+        Amount quantity = new Amount(5);
+
+        try{
+            SaleDTO saleDTO1 = controller.addItem(identifier, quantity);
+            SaleDTO saleDTO2 = currentSale.addItem(itemToAdd);
+            boolean expectedResult = true;
+            boolean actualResult = saleDTO1.equals(saleDTO2);
+            fail("Could add a non exisiting item");
+        }
+        catch(OperationFailedException operationFailed){
+        }
+    }
+
+    @Test
+    public void requestItemInfo(){
+
+        OperationFailedException thrown = assertThrows("Expected requested item info to throw, but it didn't.",
+        OperationFailedException.class,() -> controller.requestItemInfo("1337"));
+
+        assertTrue(thrown.getMessage().contains("Axel"));
+    }
+
+/*
+
+    @Test
+    public void testBookedCarIsUnavailable() {
+        CarDTO bookedCar = new CarDTO("abc123", new Amount(1000), "medium",
+                                      true, true, "red", false);
+        instance.registerCustomer(null);
+        try {
+            instance.bookCar(bookedCar);
+        } catch (Exception ex) {
+            fail("Got exception.");
+            ex.printStackTrace();
+        }
+        CarDTO result = instance.searchMatchingCar(bookedCar);
+        assertNull(result, "Booked car was found");
+    }
+
+    InvalidIdentifierException
+
+    public boolean requestItemInfo(String identifier) throws OperationFailedException{
+        boolean itemInfoFound = false;
+        try {
+          itemInfoFound =  dbController.requestItemInfo(identifier);
+        }
+        catch(InvalidIdentifierException e) {
+            // Program LOG
+           throw new OperationFailedException ("User Interface - Operation Failed, invalid identifier: " + e.getItemIdentifier(), e);
+        }
+        return itemInfoFound;
+    }
+*/
 
 }
