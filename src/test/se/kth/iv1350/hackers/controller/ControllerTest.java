@@ -64,39 +64,6 @@ public class ControllerTest{
         OperationFailedException thrown = assertThrows("Expected requested item info to throw, but it didn't.",
         OperationFailedException.class,() -> controller.requestItemInfo("1337"));
 
-        assertTrue(thrown.getMessage().contains("Axel"));
+        assertTrue(thrown.getMessage().contains("Operation Failed"));
     }
-
-/*
-
-    @Test
-    public void testBookedCarIsUnavailable() {
-        CarDTO bookedCar = new CarDTO("abc123", new Amount(1000), "medium",
-                                      true, true, "red", false);
-        instance.registerCustomer(null);
-        try {
-            instance.bookCar(bookedCar);
-        } catch (Exception ex) {
-            fail("Got exception.");
-            ex.printStackTrace();
-        }
-        CarDTO result = instance.searchMatchingCar(bookedCar);
-        assertNull(result, "Booked car was found");
-    }
-
-    InvalidIdentifierException
-
-    public boolean requestItemInfo(String identifier) throws OperationFailedException{
-        boolean itemInfoFound = false;
-        try {
-          itemInfoFound =  dbController.requestItemInfo(identifier);
-        }
-        catch(InvalidIdentifierException e) {
-            // Program LOG
-           throw new OperationFailedException ("User Interface - Operation Failed, invalid identifier: " + e.getItemIdentifier(), e);
-        }
-        return itemInfoFound;
-    }
-*/
-
 }
