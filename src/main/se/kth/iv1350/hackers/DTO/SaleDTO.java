@@ -37,7 +37,7 @@ public final class SaleDTO{
         this.changeAmount = currentSale.getChangeAmount();
     }
 
-        /**
+    /**
      * Create a new instance representing a particular sale.
      * @param currentSale
      */
