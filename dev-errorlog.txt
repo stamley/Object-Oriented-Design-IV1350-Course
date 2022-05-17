@@ -1,8 +1,8 @@
-2022-05-16T16:08:51.209, Exception was thrown: The database is not available
+2022-05-17T09:20:23.529343, Exception was thrown: The database is not available
 se.kth.iv1350.hackers.integration.InventorySystemException: The database is not available
 	at se.kth.iv1350.hackers.integration.InventorySystem.requestItemInfo(InventorySystem.java:46)
 	at se.kth.iv1350.hackers.integration.DBController.requestItemInfo(DBController.java:38)
-	at se.kth.iv1350.hackers.controller.Controller.requestItemInfo(Controller.java:42)
-	at se.kth.iv1350.hackers.controller.Controller.addItem(Controller.java:60)
-	at se.kth.iv1350.hackers.view.View.sampleExecution(View.java:50)
+	at se.kth.iv1350.hackers.controller.Controller.requestItemInfo(Controller.java:43)
+	at se.kth.iv1350.hackers.controller.Controller.addItem(Controller.java:64)
+	at se.kth.iv1350.hackers.view.View.sampleExecution(View.java:53)
 	at se.kth.iv1350.hackers.startup.Main.main(Main.java:26)
