@@ -33,8 +33,9 @@ public class Controller {
     /**
     * Fetches information for a particular item.
     *
-    * @param identifier The item that is being scanned.
-     * @throws OperationFailedException throws new, more fitting exceptions to the view 
+    * @param identifier The itentifier that is being scanned.
+    * @return information about the specified item
+    * @throws OperationFailedException throws new, more fitting exceptions to the view 
     */
     public boolean requestItemInfo(String identifier) throws OperationFailedException{
         boolean itemInfoFound = false;
@@ -55,6 +56,8 @@ public class Controller {
      * 
      * @param identifier The identifier scanned by the cashier.
      * @param quantity The quantity specified by the cashier.
+     * @return The current  sale with the new item added if the <code>identifier</code> was valid, 
+     * <code>null</code> if the identifier was invalid.
      * @throws OperationFailedException
      */
     public SaleDTO addItem(String identifier, Amount quantity) throws OperationFailedException{
