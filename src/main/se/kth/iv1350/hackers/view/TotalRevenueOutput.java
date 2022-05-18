@@ -9,7 +9,7 @@ import se.kth.iv1350.hackers.util.LogHandler;
 
 public class TotalRevenueOutput implements PaymentObserver{
     private double totalRevenue;
-    private LogHandler logHandler = new LogHandler();
+    private LogHandler logHandler = new LogHandler("totalRevenue.txt");
 
     /**
      * This is a constructor method for TotalRevenueOutput
