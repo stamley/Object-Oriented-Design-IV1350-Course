@@ -15,7 +15,7 @@ public class DBController {
     private InventorySystem inventorySystem;
     private DiscountDatabase discountDatabase;
 
-    private LogHandler logHandler = new LogHandler();
+    private LogHandler logHandler = new LogHandler("dev-errorlog.txt");
     /**
      * Creates a new instance of DBHandler.
      */
