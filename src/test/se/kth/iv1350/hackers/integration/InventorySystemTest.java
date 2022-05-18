@@ -8,7 +8,7 @@ import static org.junit.Assert.fail;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.DynAnyPackage.Invalid;
+
 
 import se.kth.iv1350.hackers.DTO.ItemDTO;
 import se.kth.iv1350.hackers.model.Item;
