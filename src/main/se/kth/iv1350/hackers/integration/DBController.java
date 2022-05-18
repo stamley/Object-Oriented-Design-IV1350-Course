@@ -1,6 +1,7 @@
 package se.kth.iv1350.hackers.integration;
 import se.kth.iv1350.hackers.DTO.DiscountDTO;
 import se.kth.iv1350.hackers.DTO.SaleDTO;
+import se.kth.iv1350.hackers.controller.OperationFailedException;
 import se.kth.iv1350.hackers.model.Item;
 import se.kth.iv1350.hackers.util.Amount;
 import se.kth.iv1350.hackers.util.LogHandler;
@@ -29,9 +30,10 @@ public class DBController {
     * Fetches information for a particular item.
     *
     * @param identifier The item that is being scanned.
+    * @throws OperationFailedException
     */
     public boolean requestItemInfo(String identifier)
-    throws InvalidIdentifierException
+    throws InvalidIdentifierException, OperationFailedException
     {
         boolean itemInfoFound = false;
         try{
@@ -39,6 +41,7 @@ public class DBController {
         }
         catch(InventorySystemException e){
             logHandler.logException(e);
+            throw new OperationFailedException("Lost connection to the database.");
         }
         return itemInfoFound; 
     }
