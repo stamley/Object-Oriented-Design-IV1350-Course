@@ -30,8 +30,8 @@ public class ControllerTest{
     }
 
     @Test
-    public void addItem(){
-
+    public void testAddItem(){
+        /*
         controller.initiateSale();
         Sale currentSale = new Sale();
 
@@ -46,6 +46,9 @@ public class ControllerTest{
 
         String identifier = "128886678";
         Amount quantity = new Amount(5);
+        
+        SaleDTO saleDTO1 = controller.addItem(identifier, quantity);
+        SaleDTO saleDTO2 = currentSale.addItem(itemToAdd);
 
         try{
             SaleDTO saleDTO1 = controller.addItem(identifier, quantity);
@@ -55,48 +58,15 @@ public class ControllerTest{
             fail("Could add a non exisiting item");
         }
         catch(OperationFailedException operationFailed){
-        }
+            
+        }*/
     }
 
     @Test
-    public void requestItemInfo(){
-
+    public void testRequestItemInfo(){
         OperationFailedException thrown = assertThrows("Expected requested item info to throw, but it didn't.",
         OperationFailedException.class,() -> controller.requestItemInfo("1337"));
 
-        assertTrue(thrown.getMessage().contains("Axel"));
+        assertTrue(thrown.getMessage().contains("Operation Failed"));
     }
-
-/*
-
-    @Test
-    public void testBookedCarIsUnavailable() {
-        CarDTO bookedCar = new CarDTO("abc123", new Amount(1000), "medium",
-                                      true, true, "red", false);
-        instance.registerCustomer(null);
-        try {
-            instance.bookCar(bookedCar);
-        } catch (Exception ex) {
-            fail("Got exception.");
-            ex.printStackTrace();
-        }
-        CarDTO result = instance.searchMatchingCar(bookedCar);
-        assertNull(result, "Booked car was found");
-    }
-
-    InvalidIdentifierException
-
-    public boolean requestItemInfo(String identifier) throws OperationFailedException{
-        boolean itemInfoFound = false;
-        try {
-          itemInfoFound =  dbController.requestItemInfo(identifier);
-        }
-        catch(InvalidIdentifierException e) {
-            // Program LOG
-           throw new OperationFailedException ("User Interface - Operation Failed, invalid identifier: " + e.getItemIdentifier(), e);
-        }
-        return itemInfoFound;
-    }
-*/
-
 }

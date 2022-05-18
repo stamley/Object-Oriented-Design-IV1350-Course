@@ -1,7 +1,29 @@
 package se.kth.iv1350.hackers.view;
 
-import java.util.Observer;
+import se.kth.iv1350.hackers.model.PaymentObserver;
+/**
+ * This class represents the view that prints the total revenue to the user interfacxe
+ */
+public class TotalRevenueView implements PaymentObserver{
+    private double totalRevenue;
 
-public class TotalRevenueView implements Observer{
+    /**
+     * This is a constructor method for the TotalRevenueView
+     */
+    public TotalRevenueView(){
+        this.totalRevenue = 0;
+    }
     
+
+    @Override
+    public void updateTotal(double totalRevenue){
+        this.totalRevenue += totalRevenue; 
+        displayTotalRevenue();
+    }
+
+    public void displayTotalRevenue(){
+        System.out.println("*****************************\n");
+        System.out.println("Total revenue of all sale: " + this.totalRevenue);
+        System.out.println("\n*****************************");
+    }
 }
