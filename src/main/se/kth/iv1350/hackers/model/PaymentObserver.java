@@ -1,9 +1,11 @@
 package se.kth.iv1350.hackers.model;
 
 public interface PaymentObserver {
-   /**
-    *
-    *
-    */
-   void updateTotal(double totalRevenue); 
+       /**
+     * Updates the the chosen interface with the total revenue.
+     * 
+     * @param totalRevenue Total revenue of type double.
+     */
+
+   void updateTotal(double totalRevenue);
 }

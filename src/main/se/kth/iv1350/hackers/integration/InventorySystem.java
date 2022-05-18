@@ -18,7 +18,6 @@ public class InventorySystem {
      * package private constructor-method 
      */
     InventorySystem(){
-
     }
 
     /**
@@ -40,7 +39,7 @@ public class InventorySystem {
      * @return If the item exists the method will return the coresponding item,
      * if it does not exist function returns <code>null</code>.
      * @throws InvalidIdentifierException 
-     */
+     */ 
     public boolean requestItemInfo(String itemIdentifier) throws InvalidIdentifierException {
         if (itemIdentifier.equals("1212")){
             throw new InventorySystemException("The database is not available");
@@ -59,7 +58,7 @@ public class InventorySystem {
      * 
      * @param itemIdentifier The value bound to a particular Item.
      * @param quantity The quantity of a particular Item.
-     * @return The item fetched from the database.
+     * @@return The item fetched from the database.
      */
     public Item getItem(String itemIdentifier, Amount quantity){
         Item fetchedItem = new Item(itemList.get(itemIdentifier).getItemDescription(), 
