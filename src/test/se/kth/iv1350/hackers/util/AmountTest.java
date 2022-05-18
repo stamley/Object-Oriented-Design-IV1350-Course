@@ -134,6 +134,4 @@ public class AmountTest {
         boolean result = amountWithZero.equals(other);
         assertEquals(expRes, result,    "Amount instance equal java.lang.Object.");
     }
-
-
 }

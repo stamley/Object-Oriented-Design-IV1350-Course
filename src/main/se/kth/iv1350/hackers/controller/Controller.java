@@ -4,7 +4,6 @@ import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.integration.*;
 import se.kth.iv1350.hackers.model.*;
 import se.kth.iv1350.hackers.util.Amount;
-import se.kth.iv1350.hackers.util.LogHandler;
 import java.util.ArrayList;
 
 public class Controller {
@@ -30,6 +29,7 @@ public class Controller {
      */
      public void initiateSale(){
         this.currentSale = new Sale();
+        this.addPaymentObservers();
         System.out.println("\n\n\n-----------\nInitiated sale");
      }
     

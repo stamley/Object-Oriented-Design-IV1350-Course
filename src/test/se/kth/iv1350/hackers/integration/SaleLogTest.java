@@ -4,15 +4,9 @@ import se.kth.iv1350.hackers.DTO.ItemDTO;
 import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.model.Item;
 import se.kth.iv1350.hackers.model.Sale;
-import se.kth.iv1350.hackers.model.TotalPrice;
 import se.kth.iv1350.hackers.util.Amount;
 
-import java.time.LocalDateTime;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,7 +32,5 @@ public class SaleLogTest {
         boolean result = saleLog.getArrayList().get(0).equals(saleDTO);
 
         assertEquals(expResult, result, "Item in list that was added does not equal the same item that was added.");
-
-
     }
 }

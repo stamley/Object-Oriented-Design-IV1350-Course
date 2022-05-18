@@ -29,41 +29,11 @@ public class ControllerTest{
         controller = null;
     }
 
+    /**
+     * Tests if exception is thrown by comparing the message in the exception with expected message.
+     */
     @Test
-    public void testAddItem(){
-        /*
-        controller.initiateSale();
-        Sale currentSale = new Sale();
-
-        String itemName = "Apple";
-        Amount costOfItem = new Amount(2);
-        Amount VATOfItem = new Amount(20);
-
-        Item itemToAdd = new Item(new ItemDTO(itemName, costOfItem, VATOfItem),
-        "128886678",new Amount(2));
-         
-        controller.addItemToInventorySystem(itemToAdd);
-
-        String identifier = "128886678";
-        Amount quantity = new Amount(5);
-        
-        SaleDTO saleDTO1 = controller.addItem(identifier, quantity);
-        SaleDTO saleDTO2 = currentSale.addItem(itemToAdd);
-
-        try{
-            SaleDTO saleDTO1 = controller.addItem(identifier, quantity);
-            SaleDTO saleDTO2 = currentSale.addItem(itemToAdd);
-            boolean expectedResult = true;
-            boolean actualResult = saleDTO1.equals(saleDTO2);
-            fail("Could add a non exisiting item");
-        }
-        catch(OperationFailedException operationFailed){
-            
-        }*/
-    }
-
-    @Test
-    public void testRequestItemInfo(){
+    public void testOperationFailedException(){
         OperationFailedException thrown = assertThrows("Expected requested item info to throw, but it didn't.",
         OperationFailedException.class,() -> controller.requestItemInfo("1337"));
 
