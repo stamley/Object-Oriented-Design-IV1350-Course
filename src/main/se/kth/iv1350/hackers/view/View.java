@@ -55,7 +55,7 @@ public class View {
             e.printStackTrace();
         }
         
-        //saleInformation = controller.addItem("1212", new Amount(5));
+        saleInformation = controller.addItem("1212", new Amount(5));
        
         saleInformation = controller.discountedSaleRequest(123);
         changeAmount = controller.registerPayment(new Amount(100));

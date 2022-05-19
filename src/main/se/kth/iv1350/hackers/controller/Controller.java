@@ -4,6 +4,8 @@ import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.integration.*;
 import se.kth.iv1350.hackers.model.*;
 import se.kth.iv1350.hackers.util.Amount;
+import se.kth.iv1350.hackers.util.LogHandler;
+
 import java.util.ArrayList;
 
 public class Controller {
@@ -12,6 +14,8 @@ public class Controller {
     private Sale currentSale;
     private Receipt currentReceipt;
     private ArrayList<PaymentObserver> paymentObserversList = new ArrayList<PaymentObserver>();
+
+    private LogHandler logHandler = new LogHandler("dev-errorlog.txt");
 
     /**
      * Creates a new instance of controller.
@@ -47,6 +51,10 @@ public class Controller {
         }
         catch(InvalidIdentifierException e) {
            throw new OperationFailedException ("User Interface - Operation Failed, invalid identifier: " + e.getItemIdentifier(), e);
+        }
+        catch(InventorySystemException e){
+            logHandler.logException(e);
+            throw new OperationFailedException("Lost connection to the database.");        
         }
        
         return itemInfoFound;
