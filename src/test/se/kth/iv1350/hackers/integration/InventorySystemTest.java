@@ -1,6 +1,5 @@
 package se.kth.iv1350.hackers.integration;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -8,7 +7,7 @@ import static org.junit.Assert.fail;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.rules.ExpectedException;
 
 import se.kth.iv1350.hackers.DTO.ItemDTO;
 import se.kth.iv1350.hackers.model.Item;
@@ -57,10 +56,27 @@ public class InventorySystemTest {
     }
 
     @Test
-    public void testRequestItemInfoInventorySystemException(){
+    public void testInventorySystemException(){
         InventorySystemException thrown = assertThrows("Expected requested item info to throw, but it didn't.",
         InventorySystemException.class,() -> inventorySystem.requestItemInfo("1212"));
 
         assertTrue(thrown.getMessage().contains("The database is not available"));
+    }
+
+    /**
+     * Testing if hard-coded parameter item identifier throws exception when it is invalid.
+     */
+
+    @Test
+    public void testInvalidParameter(){
+        String itemIdentifier = "text";
+
+        try{
+            Integer.parseInt(itemIdentifier);
+            fail("Exception is not thrown when expected.");
+        }
+        catch(NumberFormatException e){
+            assertTrue("Expected exception is thrown.",true);
+        }
     }
 }
