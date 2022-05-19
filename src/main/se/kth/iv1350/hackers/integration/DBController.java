@@ -16,7 +16,6 @@ public class DBController {
     private InventorySystem inventorySystem;
     private DiscountDatabase discountDatabase;
 
-    private LogHandler logHandler = new LogHandler("dev-errorlog.txt");
     /**
      * Creates a new instance of DBHandler.
      */
@@ -33,16 +32,12 @@ public class DBController {
     * @throws OperationFailedException
     */
     public boolean requestItemInfo(String identifier)
-    throws InvalidIdentifierException, OperationFailedException
+    throws InvalidIdentifierException, OperationFailedException, InventorySystemException
     {
         boolean itemInfoFound = false;
-        try{
-            itemInfoFound = inventorySystem.requestItemInfo(identifier); 
-        }
-        catch(InventorySystemException e){
-            logHandler.logException(e);
-            throw new OperationFailedException("Lost connection to the database.");
-        }
+        
+        itemInfoFound = inventorySystem.requestItemInfo(identifier); 
+        
         return itemInfoFound; 
     }
 
