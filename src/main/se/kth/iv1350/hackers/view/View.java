@@ -1,4 +1,6 @@
 package se.kth.iv1350.hackers.view;
+import java.rmi.server.Operation;
+
 import se.kth.iv1350.hackers.DTO.ItemDTO;
 import se.kth.iv1350.hackers.DTO.SaleDTO;
 import se.kth.iv1350.hackers.controller.Controller;
@@ -22,10 +24,8 @@ public class View {
      */
     public View(Controller controller){
         this.controller = controller;
-        this.controller.initiateSale();
         this.controller.addPaymentObserversToList(new TotalRevenueView());
         this.controller.addPaymentObserversToList(new TotalRevenueOutput());
-        this.controller.addPaymentObservers();
     }
     /**
      * Fake execution from the view.
@@ -41,9 +41,10 @@ public class View {
         controller.addItemToInventorySystem(tomat);
 
         ItemDTO bananDTO = new ItemDTO("Banan", new Amount(3), new Amount (1.2));
-        Item banan = new Item (bananDTO, "1212", new Amount(1.0));
+        Item banan = new Item (bananDTO, "123", new Amount(1.0));
         controller.addItemToInventorySystem(banan);
 
+        controller.initiateSale();
         try {
             saleInformation = controller.addItem("128886678", new Amount(5));
         }
@@ -53,7 +54,9 @@ public class View {
         catch (Exception e){
             e.printStackTrace();
         }
+        
         saleInformation = controller.addItem("1212", new Amount(5));
+       
         saleInformation = controller.discountedSaleRequest(123);
         changeAmount = controller.registerPayment(new Amount(100));
         saleInformation = controller.endSale();
@@ -66,11 +69,7 @@ public class View {
         saleInformation = controller.endSale();
         controller.logSale(saleInformation);
         */
-
-        
-
         }
-        
     }
 
    

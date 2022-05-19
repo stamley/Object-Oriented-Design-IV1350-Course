@@ -1,6 +1,7 @@
 package se.kth.iv1350.hackers.integration;
 import se.kth.iv1350.hackers.DTO.DiscountDTO;
 import se.kth.iv1350.hackers.DTO.SaleDTO;
+import se.kth.iv1350.hackers.controller.OperationFailedException;
 import se.kth.iv1350.hackers.model.Item;
 import se.kth.iv1350.hackers.util.Amount;
 import se.kth.iv1350.hackers.util.LogHandler;
@@ -15,7 +16,6 @@ public class DBController {
     private InventorySystem inventorySystem;
     private DiscountDatabase discountDatabase;
 
-    private LogHandler logHandler = new LogHandler("dev-errorlog.txt");
     /**
      * Creates a new instance of DBHandler.
      */
@@ -29,17 +29,15 @@ public class DBController {
     * Fetches information for a particular item.
     *
     * @param identifier The item that is being scanned.
+    * @throws OperationFailedException
     */
     public boolean requestItemInfo(String identifier)
-    throws InvalidIdentifierException
+    throws InvalidIdentifierException, OperationFailedException, InventorySystemException
     {
         boolean itemInfoFound = false;
-        try{
-            itemInfoFound = inventorySystem.requestItemInfo(identifier); 
-        }
-        catch(InventorySystemException e){
-            logHandler.logException(e);
-        }
+        
+        itemInfoFound = inventorySystem.requestItemInfo(identifier); 
+        
         return itemInfoFound; 
     }
 
