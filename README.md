@@ -1,4 +1,4 @@
-# seminarie3-iv1350
+# IV1350
 
 Projects from course in object-oriented design written in Java.
 
